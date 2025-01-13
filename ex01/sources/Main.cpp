@@ -25,5 +25,9 @@ int	main(void)
 			break ;
 		else if (input == "ADD")
 			book.addContact();
+		else if (input == "SEARCH")
+			std::cout << "Wrong command ";
+		else
+			std::cout << "Wrong command ";
 	}
 }

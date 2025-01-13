@@ -28,7 +28,7 @@ public:
 	~PhoneBook(void);
 
 	void	addContact(void);
-	// void	searchContact(void) const;
+	void	searchContact(void);
 };
 
 #endif 

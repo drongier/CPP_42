@@ -17,4 +17,9 @@
 void	Contact::addContact(void)
 {
 	std::cout << "Lalala ADD";
-}
+};
+
+void	Contact::searchContact(void)
+{
+	std::cout << "Lalala SEARCH";
+};

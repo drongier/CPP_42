@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRC = sources/Main.cpp sources/Contact.cpp
+SRC = sources/Main.cpp sources/Contact.cpp sources/Phonebook.cpp
 
 OBJ = $(SRC:.cpp=.o)
 

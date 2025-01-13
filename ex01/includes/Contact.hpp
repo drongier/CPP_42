@@ -25,6 +25,7 @@ private:
 
 public:
 	void	addContact(void);
+	void	searchContact(void);
 	void 	setIndex(size_t index);
 };
 
