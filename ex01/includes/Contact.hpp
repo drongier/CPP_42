@@ -6,27 +6,29 @@
 /*   By: drongier <drongier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:28:04 by drongier          #+#    #+#             */
-/*   Updated: 2025/01/10 14:43:44 by drongier         ###   ########.fr       */
+/*   Updated: 2025/01/13 17:22:02 by drongier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
 
-class Contact
-{
+class Contact {
 private:
-	size_t		_index;
-	std::string _first_name;
-	std::string _last_name;
-	std::string _nickname;
-	std::string _phone_number;
-	std::string _darkest_secret;
+    std::string firstName;
+    std::string lastName;
+    std::string nickname;
+    std::string phoneNumber;
+    std::string darkestSecret;
 
 public:
-	void	addContact(void);
-	void	searchContact(void);
-	void 	setIndex(size_t index);
+    void setFirstName(const std::string &firstName) { this->firstName = firstName; }
+    void setLastName(const std::string &lastName) { this->lastName = lastName; }
+    void setNickname(const std::string &nickname) { this->nickname = nickname; }
+    void setPhoneNumber(const std::string &phoneNumber) { this->phoneNumber = phoneNumber; }
+    void setDarkestSecret(const std::string &darkestSecret) { this->darkestSecret = darkestSecret; }
+
+    void addContact();
 };
 
 #endif

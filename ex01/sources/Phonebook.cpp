@@ -13,11 +13,12 @@ PhoneBook::~PhoneBook()
 	std::cout << std::endl << "Thanks using PHONEBOOK" << std::endl;
 }
 
-void	PhoneBook::addContact(void)
+void PhoneBook::addContact(void)
 {
-	// if (current_size == 8)
-	// 	deleteOldestContact();
-	contacts[size].addContact();
-	if (size < 8)
-		size++;
+    if (size == 8) {
+        std::cout << std::endl << "8 contacts reached" << std::endl;
+        return;
+    }
+    contacts[size].addContact();
+    size++;
 }
