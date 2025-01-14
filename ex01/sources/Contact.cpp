@@ -6,7 +6,7 @@
 /*   By: drongier <drongier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 14:20:04 by drongier          #+#    #+#             */
-/*   Updated: 2025/01/13 18:12:01 by drongier         ###   ########.fr       */
+/*   Updated: 2025/01/14 16:50:08 by drongier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <iomanip>
 #include "../includes/Contact.hpp"
 
-void	Contact::addContact()
+void	Contact::addContact(size_t size)
 {
 	std::string firstName, lastName, nickname, phoneNumber, darkestSecret;
 
@@ -29,7 +29,7 @@ void	Contact::addContact()
     std::cout << "Enter Darkest Secret: ";
     std::getline(std::cin, darkestSecret);
 	std::cout << "Contact saved ! " << std::endl;
-
+	this->index = size;
 	
     setFirstName(firstName);
     setLastName(lastName);
@@ -38,7 +38,7 @@ void	Contact::addContact()
     setDarkestSecret(darkestSecret);
 };
 
-// void	Contact::searchContact(void)
-// {
-// 	std::cout << "Lalala SEARCH";
-// };
+void displayContact(void)
+{
+	std::cout << std::setw(10) << getIndex() << std::endl;
+};

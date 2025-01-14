@@ -6,7 +6,7 @@
 /*   By: drongier <drongier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:32:51 by drongier          #+#    #+#             */
-/*   Updated: 2025/01/10 14:44:54 by drongier         ###   ########.fr       */
+/*   Updated: 2025/01/14 15:30:45 by drongier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ public:
 
 	void	addContact(void);
 	void	searchContact(void);
+	size_t	getSize(void) const;
 };
 
 #endif 

@@ -15,10 +15,34 @@ PhoneBook::~PhoneBook()
 
 void PhoneBook::addContact(void)
 {
-    if (size == 8) {
+    if (size == 8) 
+	{
         std::cout << std::endl << "8 contacts reached" << std::endl;
         return;
     }
-    contacts[size].addContact();
+    contacts[size].addContact(size);
     size++;
 }
+
+size_t PhoneBook::getSize(void) const
+{
+    return size;
+}
+
+void PhoneBook::searchContact(void)
+{
+	size_t i = 0;
+
+	if (size == 0)
+	{
+		std::cout << std::endl << "Nothing in this phonebook !" << std::endl;
+		return ;
+	}
+	std::cout << std::endl << "Loading...." << std::endl;
+	std::cout << std::endl << "INDEX | NAME | SURNAM | NICKNAME |" << std::endl;
+	while (i < size)
+	{
+		contacts[i].displayContact();
+	}
+
+};
