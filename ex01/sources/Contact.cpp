@@ -6,7 +6,7 @@
 /*   By: drongier <drongier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 14:20:04 by drongier          #+#    #+#             */
-/*   Updated: 2025/01/14 16:50:08 by drongier         ###   ########.fr       */
+/*   Updated: 2025/01/30 17:09:12 by drongier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,19 @@ void	Contact::addContact(size_t size)
 	
     setFirstName(firstName);
     setLastName(lastName);
-    setNickname(nickname);
+    setNickName(nickname);
     setPhoneNumber(phoneNumber);
     setDarkestSecret(darkestSecret);
+	setIndex(size);
 };
 
-void displayContact(void)
+void Contact::displayContact(void) const
 {
-	std::cout << std::setw(10) << getIndex() << std::endl;
+	std::cout << "|------ PHONE CONTACT ------| " << std::endl;
+	std::cout << "| Index: " << getIndex() << std::endl;
+    std::cout << "| First Name: " << getFirstName() << std::endl;
+    std::cout << "| Last Name: " << getLastName() << std::endl;
+	std::cout << "| Nick Name: " << getNickName() << std::endl;
+	std::cout << "| Phone Number: " << getPhoneNumber() << std::endl;
+	std::cout << "| Darkest Secret: " << getDarkestSecret() << std::endl;
 };

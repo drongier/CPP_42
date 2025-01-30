@@ -6,7 +6,7 @@
 /*   By: drongier <drongier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:32:51 by drongier          #+#    #+#             */
-/*   Updated: 2025/01/14 15:30:45 by drongier         ###   ########.fr       */
+/*   Updated: 2025/01/30 17:29:24 by drongier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,8 @@
 class PhoneBook
 {
 private:
-	Contact contacts[8];
 	size_t size;
-	//void	delOldContact(void);
+	Contact contacts[2];
 
 public:
 	PhoneBook(void);
@@ -30,6 +29,7 @@ public:
 	void	addContact(void);
 	void	searchContact(void);
 	size_t	getSize(void) const;
+	void 	displayContact(size_t index) const;
 };
 
 #endif 
