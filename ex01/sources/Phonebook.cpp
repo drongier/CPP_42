@@ -15,16 +15,23 @@ PhoneBook::~PhoneBook()
 	std::cout << std::endl << "Thanks for using PHONEBOOK28" << std::endl;
 }
 
+void PhoneBook::deleteOldest(void)
+{
+	for (size_t i = 0; i < 7; ++i)
+	{
+		contacts[i] = contacts[i + 1];
+		contacts[i].setIndex(i);
+	}
+	size--;
+}
+
 void PhoneBook::addContact(void)
 {
-    static size_t oldestIndex = 0; // Index circulaire pour remplacer le plus vieux contact
-
-    contacts[oldestIndex].addContact(oldestIndex);
-    oldestIndex = (oldestIndex + 1) % 2; // Incrémenter et boucler à 0 après 7
-
-    if (size < 8) {
-        size++;
-    }
+	if (size == 8)
+		deleteOldest();
+	contacts[size].addContact(size);
+	if (size < 8)
+		size++;
 }
 
 size_t PhoneBook::getSize(void) const
