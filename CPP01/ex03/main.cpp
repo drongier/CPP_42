@@ -10,6 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Weapon.hpp"
+#include "HumanA.hpp"
+#include "HumanB.hpp"
+#include <iostream>
+
 int main()
 {
 	{

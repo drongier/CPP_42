@@ -6,11 +6,11 @@
 #    By: drongier <drongier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 15:45:27 by drongier          #+#    #+#              #
-#    Updated: 2025/02/04 16:11:01 by drongier         ###   ########.fr        #
+#    Updated: 2025/02/03 18:28:56 by drongier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = main.cpp Weapon.cpp HumanA.cpp HumanB.cpp  
+SRC = main.cpp
 
 CC 		= g++
 
