@@ -6,11 +6,11 @@
 #    By: drongier <drongier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 15:45:27 by drongier          #+#    #+#              #
-#    Updated: 2025/02/10 12:46:35 by drongier         ###   ########.fr        #
+#    Updated: 2025/02/10 13:28:23 by drongier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = main.cpp Fixed.cpp
+SRC = main.cpp ClapTrap.cpp
 
 CC 		= g++
 
