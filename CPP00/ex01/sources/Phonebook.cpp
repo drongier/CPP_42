@@ -1,5 +1,6 @@
 #include <iostream>
 #include "../includes/Phonebook.hpp"
+#include <limits>
 
 PhoneBook::PhoneBook(void)
 {
@@ -46,24 +47,38 @@ void PhoneBook::searchContact(void)
 		std::cout << std::endl << "Nothing in this phonebook !" << std::endl;
 		return ;
 	}
-	std::cout << std::endl << "Loading...." << std::endl;
-	std::cout << std::setw(5) << "INDEX" << " | "
+	// std::cout << std::endl << "Loading...." << std::endl;
+	std::cout << std::setw(10) << "INDEX" << " | "
         		<< std::setw(10) << "NAME" << " | "
 				<< std::setw(10) << "SURNAME" << " | "
 				<< std::setw(10) << "NICKNAME" << " | "
 				<< std::endl;
 	for (size_t i = 0; i < size; i++)
     {
-        std::cout << std::setw(5) << i << " | "
+        std::cout << std::setw(10) << i << " | "
                   << std::setw(10) << contacts[i].getFirstName() << " | "
                   << std::setw(10) << contacts[i].getLastName() << " | "
                   << std::setw(10) << contacts[i].getNickName() << " | "
                   << std::endl;
     }
 	size_t index;
-	std::cout << std::endl << "---------------------------------------------" << std::endl;
-    std::cout << "Enter the index of the contact to display: ";
-    std::cin >> index;
+    std::cout << std::endl << "---------------------------------------------" << std::endl;
+    while (true)
+    {
+        std::cout << "Enter the index of the contact to display: ";
+        std::cin >> index;
+
+        if (std::cin.fail() || index >= size)
+        {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << "Invalid index. Please enter a valid index." << std::endl;
+        }
+        else
+        {
+            break;
+        }
+    }
 	std::cout << "\033[2J\033[1;1H";
     contacts[index].displayContact();
 };

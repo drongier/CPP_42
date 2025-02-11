@@ -6,7 +6,7 @@
 /*   By: drongier <drongier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:32:51 by drongier          #+#    #+#             */
-/*   Updated: 2025/01/31 14:25:21 by drongier         ###   ########.fr       */
+/*   Updated: 2025/02/11 13:32:25 by drongier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 class PhoneBook
 {
+	
 private:
 	size_t size;
 	Contact contacts[8];

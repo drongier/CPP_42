@@ -6,7 +6,7 @@
 /*   By: drongier <drongier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:28:04 by drongier          #+#    #+#             */
-/*   Updated: 2025/01/30 17:04:12 by drongier         ###   ########.fr       */
+/*   Updated: 2025/02/11 13:32:33 by drongier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 # define CONTACT_HPP
 #include <iomanip>
 
-class Contact {
+class Contact 
+{
+	
 private:
 	size_t 		index;
     std::string firstName;

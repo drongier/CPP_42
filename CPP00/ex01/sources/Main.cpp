@@ -6,7 +6,7 @@
 /*   By: drongier <drongier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:35:39 by drongier          #+#    #+#             */
-/*   Updated: 2025/01/31 14:37:37 by drongier         ###   ########.fr       */
+/*   Updated: 2025/02/11 13:50:22 by drongier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ int	main(void)
 			book.addContact();
 		else if (input == "SEARCH")
 			book.searchContact();
-		else if (input == "SIZE")
-			std::cout << "Nombre de contact : " << book.getSize() << std::endl;
         else
             std::cout << "Wrong command, pls use ADD, SEARCH or EXIT\n";
 	};
