@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: drongier <drongier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/03 18:34:34 by drongier          #+#    #+#             */
-/*   Updated: 2025/02/13 14:58:03 by drongier         ###   ########.fr       */
+/*   Created: 2025/02/13 14:44:25 by drongier          #+#    #+#             */
+/*   Updated: 2025/02/13 14:59:43 by drongier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 #include <iostream>
-#include <string>
 
-int main() {
-    int N = 5;
-    std::string name = "ZombieHorde";
-    Zombie* horde = zombieHorde(N, name);
+Zombie* zombieHorde(int N, std::string name) {
+    // Allouer uniquement la mémoire pour N Zombies sans appeler le constructeur
+    Zombie* horde = static_cast<Zombie*>(operator new[](N * sizeof(Zombie)));
 
+    // Initialiser chaque zombie avec le nom donné en utilisant le placement new
     for (int i = 0; i < N; i++) {
-        horde[i].announce();
+        new (&horde[i]) Zombie(name); // Appeler le constructeur avec le placement new
     }
 
-    // Appeler explicitement le destructeur pour chaque Zombie
-    for (int i = 0; i < N; i++) {
-        horde[i].~Zombie();
-    }
-
-    // Libérer la mémoire allouée
-    operator delete[](horde);
-
-    return 0;
+    // Retourner un pointeur vers le premier zombie
+    return horde;
 }

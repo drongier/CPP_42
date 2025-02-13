@@ -6,13 +6,13 @@
 #    By: drongier <drongier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 15:45:27 by drongier          #+#    #+#              #
-#    Updated: 2025/02/10 12:46:35 by drongier         ###   ########.fr        #
+#    Updated: 2025/02/13 16:50:03 by drongier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC = main.cpp Fixed.cpp
 
-CC 		= g++
+CC 		= c++
 
 OBJ = $(SRC:.cpp=.o)
 

@@ -6,13 +6,13 @@
 #    By: drongier <drongier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 15:45:27 by drongier          #+#    #+#              #
-#    Updated: 2025/02/04 16:10:29 by drongier         ###   ########.fr        #
+#    Updated: 2025/02/13 16:47:25 by drongier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = main.cpp Zombie.cpp
+SRC = main.cpp Zombie.cpp zombieHorde.cpp
 
-CC 		= g++
+CC 		= c++
 
 OBJ = $(SRC:.cpp=.o)
 

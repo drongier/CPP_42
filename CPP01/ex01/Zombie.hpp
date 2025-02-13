@@ -6,7 +6,7 @@
 /*   By: drongier <drongier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 18:45:18 by drongier          #+#    #+#             */
-/*   Updated: 2025/02/03 18:57:00 by drongier         ###   ########.fr       */
+/*   Updated: 2025/02/13 14:59:54 by drongier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ class Zombie
 	public:
 		Zombie(std::string name);
 		~Zombie();
-		void announce(void);
+		void announce(void) const;
 };
+
+Zombie* zombieHorde(int N, std::string name);
 
 #endif
