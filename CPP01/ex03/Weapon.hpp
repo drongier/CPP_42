@@ -6,7 +6,7 @@
 /*   By: drongier <drongier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 16:45:42 by drongier          #+#    #+#             */
-/*   Updated: 2025/02/04 17:03:47 by drongier         ###   ########.fr       */
+/*   Updated: 2025/03/05 15:53:43 by drongier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,13 @@
 class Weapon 
 {
 private:
-    std::string type;  // Attribut privé
+    std::string type;
 
 public:
-    // Constructeur
     Weapon(std::string type);
 
-    // Getter pour type (retourne une référence constante)
     const std::string& getType() const;
 
-    // Setter pour type
     void setType(std::string newType);
 };
 #endif
