@@ -14,13 +14,12 @@
 
 int main() 
 {
-	ClapTrap clapTrap("Pip");
+	ClapTrap robot1("R2D2");
+	ClapTrap robot2("C3PO");
 	
-	clapTrap.attack("Enemy");
-	clapTrap.takeDamage(5);
-	clapTrap.beRepaired(3);
-	clapTrap.takeDamage(10);
-	clapTrap.attack("Enemy");
-	
+	std::cout << robot1.getName() << std::endl;
+	robot2 = robot1;
+	ClapTrap copy(robot2);
+	std::cout << copy.getName() << std::endl;
 	return (0);
 }
