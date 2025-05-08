@@ -6,14 +6,13 @@
 /*   By: drongier <drongier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 12:59:06 by drongier          #+#    #+#             */
-/*   Updated: 2025/02/10 13:41:43 by drongier         ###   ########.fr       */
+/*   Updated: 2025/05/08 16:52:43 by drongier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap() {
-
 }
 
 ClapTrap::ClapTrap(std::string name) : 
@@ -68,7 +67,36 @@ void ClapTrap::attack ( const std::string& target) {
 	if (_energyPoints && _hitPoints)
 	{
 		_energyPoints--;
-		std::cout << "ClapTrap " << _name << "attacks " << target;
+		std::cout << "ClapTrap " << _name << " attacks " << target;
 		std::cout << ", causing " << _attackDamage << " damages" << std::endl;
+		std::cout << "ClapTrap " << _name << " energy point left : " << _energyPoints << std::endl;
+	}
+	if (!_energyPoints)
+		std::cout << "ClapTrap " << _name << " Need to recharge !" << std::endl;
+}
+
+void ClapTrap::takeDamage ( unsigned int amout ) {
+	if (_hitPoints)
+	{
+		_hitPoints -= amout;
+		std::cout << "ClapTrap " << _name << " has taken : " << amout;
+		std::cout << " domage ! " << std::endl; 
+	}
+	else
+		std::cout << "ClapTrap " << _name << " is dead " << std::endl;  
+}
+
+void ClapTrap::beRepaired ( unsigned int amout ) {
+	if (_energyPoints)
+	{
+		std::cout << "ClapTrap " << _name << " regen : " << amout << std::endl;
+		_hitPoints += amout;
+		std::cout << "ClapTrap " << _name << " has " << _energyPoints << " hitPoints" << std::endl<< std::endl; 
+	}
+	else
+	{
+		std::cout << "ClapTrap " << _name << " energyPoints are to low to regen" << std::endl;
+		std::cout << "ClapTrap " << _name << " has " << _energyPoints << " hitPoints" << std::endl<< std::endl;
 	}
 }
+
