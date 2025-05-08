@@ -22,23 +22,53 @@ ClapTrap::ClapTrap(std::string name) :
 	_energyPoints(10), 
 	_attackDamage(0)
 {
-	std::cout << "ClapTrap " << _name << " constructed ! " << std::endl;
+	std::cout << "ClapTrap default " << _name << ", constructed ! " << std::endl;
 }
 
 ClapTrap::ClapTrap( const ClapTrap& src) {
-
 	_name = src._name;
-	std::cout << "ClapTrap coucou copy" << std::endl;
+	_hitPoints = src._hitPoints;
+	_energyPoints = src._energyPoints;
+	_attackDamage = src._attackDamage;
+	std::cout << "ClapTrap copy constructor called" << std::endl;
 }
 
-ClapTrap::~ClapTrap() 
-{
+ClapTrap::~ClapTrap() {
 	std::cout << "ClapTrap " << _name << " is destroyed!" << std::endl;	
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& src) {
 	if (this != &src) {
-		std::cout << "Coucou je suis operator" << std::endl;	
+		_name = src._name;
+		_hitPoints = src._hitPoints;
+		_energyPoints = src._energyPoints;
+		_attackDamage = src._attackDamage;
 	}
+	std::cout << "ClapTrap " << _name << "assignement operator" << std::endl;	
 	return *this;
+}
+
+std::string ClapTrap::getName( void ) const {
+	return (_name);
+}
+
+unsigned int ClapTrap::getHitPoints( void ) const {
+	return (_hitPoints);
+}
+
+unsigned int ClapTrap::getEnergyPoints( void ) const {
+	return (_energyPoints);
+}
+
+unsigned int ClapTrap::getAttackDamage( void ) const {
+	return (_attackDamage);
+}
+
+void ClapTrap::attack ( const std::string& target) {
+	if (_energyPoints && _hitPoints)
+	{
+		_energyPoints--;
+		std::cout << "ClapTrap " << _name << "attacks " << target;
+		std::cout << ", causing " << _attackDamage << " damages" << std::endl;
+	}
 }

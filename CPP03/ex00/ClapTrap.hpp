@@ -30,12 +30,15 @@ class ClapTrap
 		ClapTrap( const ClapTrap& src);
 		ClapTrap& operator=( const ClapTrap& src );
 		~ClapTrap();
-
-
-		std::string getName() const {
-			 return _name;
-		}
 		
+		std::string		getName( void ) const;
+		unsigned int	getHitPoints( void ) const;
+		unsigned int	getEnergyPoints( void ) const;
+		unsigned int	getAttackDamage ( void ) const;
+		
+		void	attack( const std::string& target );
+		void	takeDamage( unsigned int amout );
+		void	beRepaired( unsigned int amout );
 };
 
 #endif
