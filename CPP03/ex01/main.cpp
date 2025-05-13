@@ -15,19 +15,19 @@
 
 int main() 
 {
-	ScavTrap robot1("R2D2");
+	ClapTrap robot1("R2D2");
 	ScavTrap robot2("C3PO");
 
 	std::cout << std::endl;
 	
 	std::cout << "ATTACK PHASE" << std::endl;
 
-	for (size_t i = 0; i <= 50; i++)
+	for (size_t i = 0; i <= 10; i++)
 	{
-		robot1.attack("C3P0");
-		robot2.takeDamage(robot1.getAttackDamage());
-		// if (robot2.getHitPoints() == 0)
-		// 	break;
+		robot2.attack("C3P0");
+		robot1.takeDamage(robot2.getAttackDamage());
+		if (robot2.getHitPoints() == 0)
+		break;
 		std::cout << std::endl;
 	}
 
@@ -38,7 +38,6 @@ int main()
 
 	std::cout << "UTILITY PHASE" << std::endl;
 	
-	robot1.guardGate();
 	robot2.guardGate();
 
 	std::cout << std::endl;

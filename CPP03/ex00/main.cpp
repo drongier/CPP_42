@@ -17,6 +17,7 @@ int main()
 	ClapTrap robot1("R2D2");
 	ClapTrap robot2("C3PO");
 
+	std::cout << std::endl;
 	std::cout << "ATTACK PHASE" << std::endl;
 
 	for (size_t i = 0; i < 10; i++)
