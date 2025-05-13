@@ -6,7 +6,7 @@
 /*   By: drongier <drongier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 12:59:06 by drongier          #+#    #+#             */
-/*   Updated: 2025/05/08 16:52:43 by drongier         ###   ########.fr       */
+/*   Updated: 2025/05/13 18:30:30 by drongier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,12 +91,12 @@ void ClapTrap::beRepaired ( unsigned int amout ) {
 	{
 		std::cout << "ClapTrap " << _name << " regen : " << amout << std::endl;
 		_hitPoints += amout;
-		std::cout << "ClapTrap " << _name << " has " << _energyPoints << " hitPoints" << std::endl<< std::endl; 
+		std::cout << "ClapTrap " << _name << " has " << _hitPoints << " hitPoints" << std::endl<< std::endl; 
 	}
 	else
 	{
 		std::cout << "ClapTrap " << _name << " energyPoints are to low to regen" << std::endl;
-		std::cout << "ClapTrap " << _name << " has " << _energyPoints << " hitPoints" << std::endl<< std::endl;
+		std::cout << "ClapTrap " << _name << " has " << _hitPoints << " hitPoints" << std::endl<< std::endl;
 	}
 }
 
