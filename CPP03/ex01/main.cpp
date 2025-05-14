@@ -32,8 +32,8 @@ int main()
 
 	std::cout << "REGEN PHASE" << std::endl;
 	
-	robot2.beRepaired(10);
 	robot1.beRepaired(10);
+	robot2.beRepaired(10);
 
 	std::cout << "UTILITY PHASE" << std::endl;
 	

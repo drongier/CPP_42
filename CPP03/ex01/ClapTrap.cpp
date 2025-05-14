@@ -78,19 +78,23 @@ void ClapTrap::attack ( const std::string& target) {
 void ClapTrap::takeDamage ( unsigned int amout ) {
 	if (_hitPoints)
 	{
-		_hitPoints -= amout;
 		std::cout << "ClapTrap " << _name << " has taken : " << amout;
 		std::cout << " domages ! " << std::endl; 
 	}
 	else
-		std::cout << "ClapTrap " << _name << " is dead " << std::endl;  
+		std::cout << "ClapTrap " << _name << " is dead " << std::endl;
+	if (amout >= _hitPoints) {
+		_hitPoints = 0;
+	} else {
+		_hitPoints -= amout;
+	} 
 }
 
-void ClapTrap::beRepaired ( unsigned int amout ) {
+void ClapTrap::beRepaired ( unsigned int amount ) {
 	if (_energyPoints)
 	{
-		std::cout << "ClapTrap " << _name << " regen : " << amout << std::endl;
-		_hitPoints += amout;
+		std::cout << "ClapTrap " << _name << " regen : " << amount << std::endl;
+		_hitPoints += amount;
 		std::cout << "ClapTrap " << _name << " has " << _hitPoints << " hitPoints" << std::endl<< std::endl; 
 	}
 	else
