@@ -6,7 +6,7 @@
 /*   By: drongier <drongier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 13:21:34 by drongier          #+#    #+#             */
-/*   Updated: 2025/05/13 18:37:42 by drongier         ###   ########.fr       */
+/*   Updated: 2025/05/14 14:48:53 by drongier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,9 @@ int main()
 	std::cout << robot1.getHitPoints() << std::endl;
 	std::cout << "ATTACK PHASE" << std::endl;
 
-	robot2.attack("C3P0");
+	robot2.attack("R2D2");
 	robot1.takeDamage(robot2.getAttackDamage());
-	robot2.attack("C3P0");
-	robot1.takeDamage(robot2.getAttackDamage());
-	robot2.attack("C3P0");
+	robot2.attack("R2D2");
 	robot1.takeDamage(robot2.getAttackDamage());
 	std::cout << std::endl;
 
