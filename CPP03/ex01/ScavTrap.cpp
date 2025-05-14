@@ -8,7 +8,7 @@ ScavTrap::ScavTrap(void) : ClapTrap()
     std::cout << "ScavTrap default constructor called" << std::endl;
 }
 
-ScavTrap::ScavTrap(std::string name) : ClapTrap()
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
     _name = name;
     _hitPoints = 100;
@@ -34,7 +34,7 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& src)
 
 ScavTrap::~ScavTrap()
 {
-    std::cout << "ScavTrap " << _name << " is destroyed!" << std::endl;
+    std::cout << "ScavTrap.. " << _name << " is destroyed!" << std::endl;
 }
 
 
