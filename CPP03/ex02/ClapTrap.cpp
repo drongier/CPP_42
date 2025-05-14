@@ -6,7 +6,7 @@
 /*   By: drongier <drongier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 12:59:06 by drongier          #+#    #+#             */
-/*   Updated: 2025/05/14 14:07:42 by drongier         ###   ########.fr       */
+/*   Updated: 2025/05/14 17:27:16 by drongier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,12 @@ void ClapTrap::attack ( const std::string& target) {
 	if (_energyPoints && _hitPoints)
 	{
 		_energyPoints--;
-		std::cout << "ClapTrap " << _name << " attacks " << target;
+		std::cout << _name << " attacks " << target;
 		std::cout << ", causing " << _attackDamage << " damages" << std::endl;
-		std::cout << "ClapTrap " << _name << " energy point left : " << _energyPoints << std::endl;
+		std::cout << _name << " energy point left : " << _energyPoints << std::endl;
 	}
 	if (!_energyPoints)
-		std::cout << "ClapTrap " << _name << " Need to recharge !" << std::endl;
+		std::cout << _name << " Need to recharge !" << std::endl;
 }
 
 void ClapTrap::takeDamage ( unsigned int amount ) {
@@ -90,16 +90,14 @@ void ClapTrap::takeDamage ( unsigned int amount ) {
 }
 
 void ClapTrap::beRepaired ( unsigned int amount ) {
-	if (_energyPoints)
+	if (!_energyPoints)
 	{
-		std::cout << "ClapTrap " << _name << " regen : " << amount << std::endl;
-		_hitPoints += amount;
-		std::cout << "ClapTrap " << _name << " has " << _hitPoints << " hitPoints" << std::endl<< std::endl; 
+		std::cout << _name << " energyPoints are to low to regen" << std::endl;
 	}
 	else
 	{
-		std::cout << "ClapTrap " << _name << " energyPoints are to low to regen" << std::endl;
-		std::cout << "ClapTrap " << _name << " has " << _hitPoints << " hitPoints" << std::endl<< std::endl;
+		std::cout << _name << " regen : " << amount << " HP" << std::endl;
+		_hitPoints += amount;
 	}
 }
 

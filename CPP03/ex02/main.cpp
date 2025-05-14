@@ -6,7 +6,7 @@
 /*   By: drongier <drongier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 13:21:34 by drongier          #+#    #+#             */
-/*   Updated: 2025/05/14 14:40:29 by drongier         ###   ########.fr       */
+/*   Updated: 2025/05/14 17:31:45 by drongier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,9 @@ int main()
 	
 	robot1.beRepaired(10);
 	robot2.beRepaired(10);
-	robot3.beRepaired(28);
-
+	robot3.beRepaired(10);
+	std::cout << std::endl;
+	
 	std::cout << "UTILITY PHASE" << std::endl;
 	
 	robot2.guardGate();
