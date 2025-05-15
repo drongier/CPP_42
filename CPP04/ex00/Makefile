@@ -6,26 +6,26 @@
 #    By: drongier <drongier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 15:45:27 by drongier          #+#    #+#              #
-#    Updated: 2025/02/13 16:49:35 by drongier         ###   ########.fr        #
+#    Updated: 2025/05/14 13:57:58 by drongier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = main.cpp Fixed.cpp
+SRC = main.cpp Animal.cpp
 
-CC 		= c++
+CXX 		= c++
 
 OBJ = $(SRC:.cpp=.o)
 
-CFLAGS	= -Wall -Wextra - Werror -g -std=c++98
+CXXFLAGS	= -Wall -Wextra -Werror -g -std=c++98
 
-NAME	= clap
+NAME	= animal
 
 RM = rm -f
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CPPFLAGS) $(OBJ) -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 
 clean:
 	$(RM) $(OBJ)
