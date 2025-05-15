@@ -3,7 +3,6 @@
 
 #include <string>
 #include <iostream>
-#include "Dog.hpp"
 
 class Animal 
 {
@@ -17,7 +16,7 @@ class Animal
         Animal( void );
         Animal( const Animal& src);
         Animal& operator=( const Animal& src );
-        ~Animal();
+        virtual ~Animal();
 };
 
 #endif
