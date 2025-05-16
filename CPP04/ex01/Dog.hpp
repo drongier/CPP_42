@@ -14,7 +14,8 @@ public:
 	Dog& operator=( const Dog& src );
 	~Dog();
 
-	std::string getBrainIdea(int index) const;
+	void setBrainIdea(size_t index, const std::string& idea);
+	std::string getBrainIdea(size_t index) const;
 
 private:
 	Brain* _brain;

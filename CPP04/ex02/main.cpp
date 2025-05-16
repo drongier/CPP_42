@@ -1,11 +1,11 @@
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
 
 int main()
 {
 	size_t	size = 4;
-	const Animal* array[size];
+	const AAnimal* array[size];
 
 	std::cout << "\033[1;32mChecking constructor\033[0m" << std::endl;
 	{
@@ -30,6 +30,13 @@ int main()
 
 		std::cout << std::endl;
 	}
+
+	// {
+	// 	std::cout << "\033[1;32mChecking that an A_Animal cannot be instanciated\033[0m" << std::endl;
+
+	// 	const AAnimal* a = new AAnimal(); 
+	// }
+
 	{
 		std::cout << "\033[1;32mChecking that copies are deep copies\033[0m" << std::endl;
 

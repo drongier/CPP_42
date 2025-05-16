@@ -3,22 +3,22 @@
 
 Dog::Dog() : Animal() { 
 	type = "Dog";
-	std::cout << "Dog constructor called" << std::endl;
+	std::cout << "Dog constructor called.. Ouaf !" << std::endl;
 }
 
 Dog::Dog( const Dog& src ) : Animal( src ) {
-	std::cout << "Dog copy constructor called" << std::endl;
+	std::cout << "Dog copy constructor called.. Ouaf !" << std::endl;
 }
 
 Dog& Dog::operator=( const Dog& src) {
 	if (this != &src)
 		type = src.type;
-	std::cout << "Dog assignment operator used" << std::endl;
+	std::cout << "Dog assignment operator used.. Ouaf !" << std::endl;
 	return *this;
 }
 
 Dog::~Dog() {
-	std::cout << "Dog destructor called" << std::endl;
+	std::cout << "Dog destructor called.. Ouaf !" << std::endl;
 }
 
 void	Dog::makeSound( void ) const {

@@ -6,7 +6,7 @@
 
 int main()
 {
-	std::cout << "GOODTEST " << std::endl << std::endl;
+	std::cout << "\033[1;32mGOOD TEST\033[0m" << std::endl;
     const Animal* animal = new Animal();
     const Animal* dog = new Dog();
 	const Animal* cat = new Cat();
@@ -25,7 +25,7 @@ int main()
 	delete animal, delete dog, delete cat;
 	std::cout << std::endl;
 
-	std::cout << "WRONGTEST " << std::endl << std::endl;
+	std::cout << "\033[1;32mWRONG TEST\033[0m" << std::endl;
 
 	const WrongAnimal* wrongAnimal = new WrongAnimal();
 	const WrongAnimal* wrongCat = new WrongCat();

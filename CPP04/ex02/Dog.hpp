@@ -1,19 +1,18 @@
-#ifndef CAT_HPP
-#define CAT_HPP
+#ifndef DOG_HPP
+#define DOG_HPP
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Brain.hpp"
 
-
-class Cat : public Animal
+class Dog : public AAnimal
 {
 public:
 	void	makeSound( void ) const;
 
-	Cat();
-	Cat( const Cat& src );
-	Cat& operator=( const Cat& src );
-	~Cat();
+	Dog();
+	Dog( const Dog& src );
+	Dog& operator=( const Dog& src );
+	~Dog();
 
 	void setBrainIdea(size_t index, const std::string& idea);
 	std::string getBrainIdea(size_t index) const;
