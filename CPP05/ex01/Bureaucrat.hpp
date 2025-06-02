@@ -29,7 +29,7 @@ public:
 
 	friend std::ostream& operator<<(std::ostream& os, const Bureaucrat& b);
 
-	// Exceptions personnalisées
+	// Exceptions
 	class GradeTooHighException : public std::exception {
 	public:
 		const char* what() const throw();

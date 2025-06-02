@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: drongier <drongier@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/02 12:37:59 by drongier          #+#    #+#             */
+/*   Updated: 2025/06/02 13:33:05 by drongier         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 
@@ -22,13 +34,13 @@ public:
 	const std::string& getName() const;
 	int getGrade() const;
 
-	// Méthodes de modification de grade
+	// Méthodes
 	void incrementGrade();
 	void decrementGrade();
 
 	friend std::ostream& operator<<(std::ostream& os, const Bureaucrat& b);
 
-	// Exceptions personnalisées
+	// Exceptions
 	class GradeTooHighException : public std::exception {
 	public:
 		const char* what() const throw();
