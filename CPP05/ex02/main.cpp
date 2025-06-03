@@ -35,10 +35,10 @@ int main() {
         
         supervisor.signForm(robot);   // Grade 72 == 72 required, should work
         
-        // Multiple execution attempts to see randomness
         for (int i = 1; i <= 5; i++) {
             std::cout << "\nAttempt " << i << ":\n";
-            manager.executeForm(robot);   // Grade 50 < 45 required, should work
+			usleep(200000);
+            president.executeForm(robot);   // Grade 50 < 45 required, should work
         }
         
     } catch (std::exception& e) {
@@ -75,6 +75,17 @@ int main() {
         
         intern.signForm(shrub2);      // Grade 150 < 145 required, should work
         intern.executeForm(shrub2);   // Grade 150 > 137 required, should fail
+        
+    } catch (std::exception& e) {
+        std::cerr << "Exception: " << e.what() << std::endl;
+    }
+std::cout << "\n\033[1;36m--- TEST 3: PRESIDENTIAL PARDON - SUCCESS ---\033[0m\n";
+    try {
+        PresidentialPardonForm pardon("Arthur_Dent");
+        std::cout << pardon << std::endl;
+        
+        director.signForm(pardon);    // Grade 25 == 25 required, should work
+        president.executeForm(pardon); // Grade 1 < 5 required, should work
         
     } catch (std::exception& e) {
         std::cerr << "Exception: " << e.what() << std::endl;
