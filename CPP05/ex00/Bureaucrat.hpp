@@ -6,7 +6,7 @@
 /*   By: drongier <drongier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 12:37:59 by drongier          #+#    #+#             */
-/*   Updated: 2025/06/02 13:33:05 by drongier         ###   ########.fr       */
+/*   Updated: 2025/06/04 15:09:49 by drongier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,7 @@ public:
 
 	// Méthodes
 	void incrementGrade();
-	void decrementGrade();
-
-	friend std::ostream& operator<<(std::ostream& os, const Bureaucrat& b);
+	void decrementGrade(); 
 
 	// Exceptions
 	class GradeTooHighException : public std::exception {
@@ -52,5 +50,7 @@ public:
 	};
 
 };
+
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& b);
 
 #endif

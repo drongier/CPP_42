@@ -5,9 +5,9 @@
 #include "Intern.hpp"
 
 int main() {
-    std::cout << "\033[1;34m===============================================\033[0m\n";
-    std::cout << "\033[1;34m             INTERN TESTS\033[0m\n";
-    std::cout << "\033[1;34m===============================================\033[0m\n";
+    std::cout << "\n\033[1;34m╔═══════════════════════════════════════════╗\033[0m\n";
+    std::cout << "\033[1;34m║             INTERN TESTS                  ║\033[0m\n";
+    std::cout << "\033[1;34m╚═══════════════════════════════════════════╝\033[0m\n";
 
     // Creating bureaucrats and intern
     Bureaucrat president("President", 1);
@@ -15,7 +15,7 @@ int main() {
     Bureaucrat intern_bureaucrat("InternBureaucrat", 150);
     Intern intern;
 
-    std::cout << "\n\033[1;36m--- TEST 1: VALID SHRUBBERY CREATION FORM ---\033[0m\n";
+    std::cout << "\n\033[1;32m═══ TEST 1: VALID SHRUBBERY CREATION FORM ═══\033[0m\n";
     try {
         AForm* shrubForm = intern.makeForm("shrubbery creation", "backyard");
         if (shrubForm) {
@@ -31,7 +31,7 @@ int main() {
         std::cerr << "Exception: " << e.what() << std::endl;
     }
 
-    std::cout << "\n\033[1;36m--- TEST 2: VALID ROBOTOMY REQUEST FORM ---\033[0m\n";
+    std::cout << "\n\033[1;32m═══ TEST 2: VALID ROBOTOMY REQUEST FORM ═══\033[0m\n";
     try {
         AForm* robotForm = intern.makeForm("robotomy request", "Bender");
         if (robotForm) {
@@ -47,7 +47,7 @@ int main() {
         std::cerr << "Exception: " << e.what() << std::endl;
     }
 
-    std::cout << "\n\033[1;36m--- TEST 3: VALID PRESIDENTIAL PARDON FORM ---\033[0m\n";
+    std::cout << "\n\033[1;32m═══ TEST 3: VALID PRESIDENTIAL PARDON FORM ═══\033[0m\n";
     try {
         AForm* pardonForm = intern.makeForm("presidential pardon", "Arthur_Dent");
         if (pardonForm) {
@@ -63,7 +63,7 @@ int main() {
         std::cerr << "Exception: " << e.what() << std::endl;
     }
 
-    std::cout << "\n\033[1;31m--- TEST 4: INVALID FORM NAME ---\033[0m\n";
+    std::cout << "\n\033[1;31m═══ TEST 4: INVALID FORM NAME ═══\033[0m\n";
     try {
         AForm* invalidForm = intern.makeForm("invalid form", "Target");
         if (invalidForm) {
@@ -76,7 +76,7 @@ int main() {
         std::cerr << "Exception: " << e.what() << std::endl;
     }
 
-    std::cout << "\n\033[1;31m--- TEST 5: EMPTY FORM NAME ---\033[0m\n";
+    std::cout << "\n\033[1;31m═══ TEST 5: EMPTY FORM NAME ═══\033[0m\n";
     try {
         AForm* emptyForm = intern.makeForm("", "Target");
         if (emptyForm) {
@@ -89,7 +89,7 @@ int main() {
         std::cerr << "Exception: " << e.what() << std::endl;
     }
 
-    std::cout << "\n\033[1;33m--- TEST 6: CASE SENSITIVITY ---\033[0m\n";
+    std::cout << "\n\033[1;33m═══ TEST 6: CASE SENSITIVITY ═══\033[0m\n";
     try {
         AForm* upperForm = intern.makeForm("ROBOTOMY REQUEST", "R2D2");
         if (upperForm) {
@@ -110,7 +110,7 @@ int main() {
         std::cerr << "Exception: " << e.what() << std::endl;
     }
 
-    std::cout << "\n\033[1;33m--- TEST 7: MULTIPLE FORMS CREATION ---\033[0m\n";
+    std::cout << "\n\033[1;33m═══ TEST 7: MULTIPLE FORMS CREATION ═══\033[0m\n";
     try {
         std::cout << "Creating multiple forms with same intern...\n";
         
@@ -133,7 +133,7 @@ int main() {
         std::cerr << "Exception: " << e.what() << std::endl;
     }
 
-    std::cout << "\n\033[1;33m--- TEST 8: FORM WITH SPECIAL CHARACTERS ---\033[0m\n";
+    std::cout << "\n\033[1;33m═══ TEST 8: FORM WITH SPECIAL CHARACTERS ═══\033[0m\n";
     try {
         AForm* specialForm = intern.makeForm("shrubbery creation", "garden_with_spaces and-dashes");
         if (specialForm) {
@@ -144,7 +144,7 @@ int main() {
         std::cerr << "Exception: " << e.what() << std::endl;
     }
 
-    std::cout << "\n\033[1;33m--- TEST 9: WORKFLOW WITH DIFFERENT BUREAUCRATS ---\033[0m\n";
+    std::cout << "\n\033[1;36m═══ TEST 9: WORKFLOW WITH DIFFERENT BUREAUCRATS ═══\033[0m\n";
     try {
         AForm* workflowForm = intern.makeForm("robotomy request", "TestRobot");
         if (workflowForm) {
@@ -168,9 +168,9 @@ int main() {
         std::cerr << "Exception: " << e.what() << std::endl;
     }
 
-    std::cout << "\n\033[1;34m===============================================\033[0m\n";
-    std::cout << "\033[1;34m           INTERN TESTS COMPLETED\033[0m\n";
-    std::cout << "\033[1;34m===============================================\033[0m\n";
+    std::cout << "\n\033[1;34m╔═══════════════════════════════════════════╗\033[0m\n";
+    std::cout << "\033[1;34m║           INTERN TESTS COMPLETED          ║\033[0m\n";
+    std::cout << "\033[1;34m╚═══════════════════════════════════════════╝\033[0m\n";
 
     return 0;
 }

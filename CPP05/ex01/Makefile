@@ -6,7 +6,7 @@
 #    By: drongier <drongier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 15:45:27 by drongier          #+#    #+#              #
-#    Updated: 2025/05/16 17:23:41 by drongier         ###   ########.fr        #
+#    Updated: 2025/06/04 15:22:55 by drongier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ OBJ = $(SRC:.cpp=.o)
 
 CXXFLAGS	= -Wall -Wextra -Werror -g -std=c++98
 
-NAME	= bureaucrat
+NAME	= form
 
 RM = rm -f
 

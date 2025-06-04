@@ -4,9 +4,9 @@
 #include "PresidentialPardonForm.hpp"
 
 int main() {
-    std::cout << "\033[1;34m===============================================\033[0m\n";
-    std::cout << "\033[1;34m           FORM EXECUTION TESTS\033[0m\n";
-    std::cout << "\033[1;34m===============================================\033[0m\n";
+    std::cout << "\n\033[1;34m╔═══════════════════════════════════════════╗\033[0m\n";
+    std::cout << "\033[1;34m║           FORM EXECUTION TESTS            ║\033[0m\n";
+    std::cout << "\033[1;34m╚═══════════════════════════════════════════╝\033[0m\n";
 
     // Creating bureaucrats with different grades
     Bureaucrat president("President", 1);
@@ -16,7 +16,7 @@ int main() {
     Bureaucrat clerk("Clerk", 100);
     Bureaucrat intern("Intern", 150);
 
-    std::cout << "\n\033[1;36m--- TEST 1: SUCCESSFUL FORM SIGNING & EXECUTION ---\033[0m\n";
+    std::cout << "\n\033[1;32m═══ TEST 1: SUCCESSFUL FORM SIGNING & EXECUTION ═══\033[0m\n";
     try {
         ShrubberyCreationForm shrub("home_garden");
         std::cout << shrub << std::endl;
@@ -28,7 +28,7 @@ int main() {
         std::cerr << "Exception: " << e.what() << std::endl;
     }
 
-    std::cout << "\n\033[1;36m--- TEST 2: ROBOTOMY REQUEST - MULTIPLE ATTEMPTS ---\033[0m\n";
+    std::cout << "\n\033[1;36m═══ TEST 2: ROBOTOMY REQUEST - MULTIPLE ATTEMPTS ═══\033[0m\n";
     try {
         RobotomyRequestForm robot("R2D2");
         std::cout << robot << std::endl;
@@ -37,15 +37,15 @@ int main() {
         
         for (int i = 1; i <= 5; i++) {
             std::cout << "\nAttempt " << i << ":\n";
-			usleep(200000);
-            president.executeForm(robot);   // Grade 50 < 45 required, should work
+            usleep(200000);
+            president.executeForm(robot);   // Grade 1 < 45 required, should work
         }
         
     } catch (std::exception& e) {
         std::cerr << "Exception: " << e.what() << std::endl;
     }
 
-    std::cout << "\n\033[1;36m--- TEST 3: PRESIDENTIAL PARDON - SUCCESS ---\033[0m\n";
+    std::cout << "\n\033[1;32m═══ TEST 3: PRESIDENTIAL PARDON - SUCCESS ═══\033[0m\n";
     try {
         PresidentialPardonForm pardon("Arthur_Dent");
         std::cout << pardon << std::endl;
@@ -57,7 +57,7 @@ int main() {
         std::cerr << "Exception: " << e.what() << std::endl;
     }
 
-    std::cout << "\n\033[1;31m--- TEST 4: EXECUTION WITHOUT SIGNATURE ---\033[0m\n";
+    std::cout << "\n\033[1;31m═══ TEST 4: EXECUTION WITHOUT SIGNATURE ═══\033[0m\n";
     try {
         ShrubberyCreationForm unsignedForm("unsigned_garden");
         std::cout << unsignedForm << std::endl;
@@ -68,7 +68,7 @@ int main() {
         std::cerr << "Exception: " << e.what() << std::endl;
     }
 
-    std::cout << "\n\033[1;31m--- TEST 5: INSUFFICIENT GRADE FOR EXECUTION ---\033[0m\n";
+    std::cout << "\n\033[1;31m═══ TEST 5: INSUFFICIENT GRADE FOR EXECUTION ═══\033[0m\n";
     try {
         ShrubberyCreationForm shrub2("office_garden");
         std::cout << shrub2 << std::endl;
@@ -79,19 +79,8 @@ int main() {
     } catch (std::exception& e) {
         std::cerr << "Exception: " << e.what() << std::endl;
     }
-std::cout << "\n\033[1;36m--- TEST 3: PRESIDENTIAL PARDON - SUCCESS ---\033[0m\n";
-    try {
-        PresidentialPardonForm pardon("Arthur_Dent");
-        std::cout << pardon << std::endl;
-        
-        director.signForm(pardon);    // Grade 25 == 25 required, should work
-        president.executeForm(pardon); // Grade 1 < 5 required, should work
-        
-    } catch (std::exception& e) {
-        std::cerr << "Exception: " << e.what() << std::endl;
-    }
 
-    std::cout << "\n\033[1;31m--- TEST 6: INSUFFICIENT GRADE FOR SIGNING ---\033[0m\n";
+    std::cout << "\n\033[1;31m═══ TEST 6: INSUFFICIENT GRADE FOR SIGNING ═══\033[0m\n";
     try {
         RobotomyRequestForm robot2("C3PO");
         std::cout << robot2 << std::endl;
@@ -103,7 +92,7 @@ std::cout << "\n\033[1;36m--- TEST 3: PRESIDENTIAL PARDON - SUCCESS ---\033[0m\n
         std::cerr << "Exception: " << e.what() << std::endl;
     }
 
-    std::cout << "\n\033[1;31m--- TEST 7: PRESIDENTIAL PARDON - INSUFFICIENT EXECUTION GRADE ---\033[0m\n";
+    std::cout << "\n\033[1;31m═══ TEST 7: PRESIDENTIAL PARDON - INSUFFICIENT EXECUTION GRADE ═══\033[0m\n";
     try {
         PresidentialPardonForm pardon2("Ford_Prefect");
         std::cout << pardon2 << std::endl;
@@ -115,7 +104,7 @@ std::cout << "\n\033[1;36m--- TEST 3: PRESIDENTIAL PARDON - SUCCESS ---\033[0m\n
         std::cerr << "Exception: " << e.what() << std::endl;
     }
 
-    std::cout << "\n\033[1;33m--- TEST 8: EDGE CASE - EXACT GRADE REQUIREMENTS ---\033[0m\n";
+    std::cout << "\n\033[1;33m═══ TEST 8: EDGE CASE - EXACT GRADE REQUIREMENTS ═══\033[0m\n";
     try {
         Bureaucrat exactSigner("ExactSigner", 145);
         Bureaucrat exactExecutor("ExactExecutor", 137);
@@ -130,7 +119,7 @@ std::cout << "\n\033[1;36m--- TEST 3: PRESIDENTIAL PARDON - SUCCESS ---\033[0m\n
         std::cerr << "Exception: " << e.what() << std::endl;
     }
 
-    std::cout << "\n\033[1;33m--- TEST 9: MULTIPLE FORMS WITH SAME BUREAUCRAT ---\033[0m\n";
+    std::cout << "\n\033[1;33m═══ TEST 9: MULTIPLE FORMS WITH SAME BUREAUCRAT ═══\033[0m\n";
     try {
         ShrubberyCreationForm shrub4("park");
         RobotomyRequestForm robot3("Wall-E");
@@ -149,7 +138,7 @@ std::cout << "\n\033[1;36m--- TEST 3: PRESIDENTIAL PARDON - SUCCESS ---\033[0m\n
         std::cerr << "Exception: " << e.what() << std::endl;
     }
 
-    std::cout << "\n\033[1;33m--- TEST 10: FORM STATUS VERIFICATION ---\033[0m\n";
+    std::cout << "\n\033[1;33m═══ TEST 10: FORM STATUS VERIFICATION ═══\033[0m\n";
     try {
         ShrubberyCreationForm shrub5("status_test");
         
@@ -163,9 +152,9 @@ std::cout << "\n\033[1;36m--- TEST 3: PRESIDENTIAL PARDON - SUCCESS ---\033[0m\n
         std::cerr << "Exception: " << e.what() << std::endl;
     }
 
-    std::cout << "\n\033[1;34m===============================================\033[0m\n";
-    std::cout << "\033[1;34m              TESTS COMPLETED\033[0m\n";
-    std::cout << "\033[1;34m===============================================\033[0m\n";
+    std::cout << "\n\033[1;34m╔═══════════════════════════════════════════╗\033[0m\n";
+    std::cout << "\033[1;34m║        FORM EXECUTION TESTS COMPLETED     ║\033[0m\n";
+    std::cout << "\033[1;34m╚═══════════════════════════════════════════╝\033[0m\n";
 
     return 0;
 }
