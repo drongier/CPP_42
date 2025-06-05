@@ -27,21 +27,21 @@ public:
 	void incrementGrade();
 	void decrementGrade();
 
-	friend std::ostream& operator<<(std::ostream& os, const Bureaucrat& b);
-
-	// Exceptions
-	class GradeTooHighException : public std::exception {
-	public:
-		const char* what() const throw();
-	};
-
-	class GradeTooLowException : public std::exception {
-	public:
-		const char* what() const throw();
-	};
-
 	void signForm(Form& form);
 
 };
+
+// Exceptions
+class GradeTooHighException : public std::exception {
+	public:
+		const char* what() const throw();
+	};
+
+class GradeTooLowException : public std::exception {
+	public:
+		const char* what() const throw();
+	};
+
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& b);
 
 #endif

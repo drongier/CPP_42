@@ -6,7 +6,7 @@
 /*   By: drongier <drongier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 12:37:55 by drongier          #+#    #+#             */
-/*   Updated: 2025/06/04 15:03:17 by drongier         ###   ########.fr       */
+/*   Updated: 2025/06/05 13:10:50 by drongier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,11 @@ void Bureaucrat::decrementGrade() {
 }
 
 // Exceptions
-const char* Bureaucrat::GradeTooHighException::what() const throw() {
+const char* GradeTooHighException::what() const throw() {
 	return "Grade too high!";
 }
 
-const char* Bureaucrat::GradeTooLowException::what() const throw() {
+const char* GradeTooLowException::what() const throw() {
 	return "Grade too low!";
 }
 

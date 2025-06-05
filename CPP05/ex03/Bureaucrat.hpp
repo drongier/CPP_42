@@ -31,9 +31,6 @@ public:
 	void signForm(AForm& form);
 	void executeForm(AForm const & form) const;
 
-
-	friend std::ostream& operator<<(std::ostream& os, const Bureaucrat& b);
-
 	// Exceptions personnalisées
 	class GradeTooHighException : public std::exception {
 	public:
@@ -46,5 +43,7 @@ public:
 	};
 
 };
+
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& b);
 
 #endif

@@ -6,6 +6,7 @@ Form::Form() : _name("Default"), _signed(false), _gradeToSign(150), _gradeToExec
 Form::Form(const std::string& name, int gradeToSign, int gradeToExecute)
 	: _name(name), _signed(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute)
 {
+	std::cout << "Form constructor called" << std::endl;
 	if (_gradeToSign < 1 || _gradeToExecute < 1)
 		throw Form::GradeTooHighException();
 	if (_gradeToSign > 150 || _gradeToExecute > 150)
@@ -24,7 +25,9 @@ Form& Form::operator=(const Form& src)
 	return *this;
 }
 
-Form::~Form() {}
+Form::~Form() {
+		std::cout << "Form destructor called" << std::endl;
+}
 
 // Exceptions
 const char* Form::GradeTooHighException::what() const throw() {

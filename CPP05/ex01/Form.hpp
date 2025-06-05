@@ -44,7 +44,8 @@ class  Form
     // Fonction pour signer
 	void beSigned(const Bureaucrat& b);
 
-    friend std::ostream& operator<<(std::ostream& os, const Form& form);
 };
+
+std::ostream& operator<<(std::ostream& os, const Form& form);
 
 #endif

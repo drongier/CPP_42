@@ -6,7 +6,7 @@
 /*   By: drongier <drongier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 12:37:59 by drongier          #+#    #+#             */
-/*   Updated: 2025/06/04 15:09:49 by drongier         ###   ########.fr       */
+/*   Updated: 2025/06/05 13:09:59 by drongier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 #include <exception>
 
 
-class Bureaucrat
-{
+class Bureaucrat {
+	
 private:
     const std::string   _name;
     int                 _grade;
@@ -38,18 +38,18 @@ public:
 	void incrementGrade();
 	void decrementGrade(); 
 
-	// Exceptions
-	class GradeTooHighException : public std::exception {
-	public:
-		const char* what() const throw();
-	};
-
-	class GradeTooLowException : public std::exception {
-	public:
-		const char* what() const throw();
-	};
-
 };
+
+// Exceptions
+class GradeTooHighException : public std::exception {
+	public:
+		const char* what() const throw();
+	};
+
+class GradeTooLowException : public std::exception {
+	public:
+		const char* what() const throw();
+	};
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& b);
 
