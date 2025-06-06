@@ -41,7 +41,6 @@ class  Form
 	int getGradeToSign() const;
 	int getGradeToExecute() const;
 
-    // Fonction pour signer
 	void beSigned(const Bureaucrat& b);
 
 };

@@ -21,7 +21,7 @@ Form::Form(const Form& src)
 Form& Form::operator=(const Form& src)
 {
 	if (this != &src)
-		_signed = src._signed; // seuls attributs modifiables
+		_signed = src._signed;
 	return *this;
 }
 
@@ -44,7 +44,6 @@ bool Form::getIsSigned() const { return _signed; }
 int Form::getGradeToSign() const { return _gradeToSign; }
 int Form::getGradeToExecute() const { return _gradeToExecute; }
 
-// Fonction pour signer
 void Form::beSigned(const Bureaucrat& b)
 {
 	if (b.getGrade() > _gradeToSign)
@@ -52,7 +51,6 @@ void Form::beSigned(const Bureaucrat& b)
 	_signed = true;
 }
 
-// Surcharge de l'opérateur <<
 std::ostream& operator<<(std::ostream& os, const Form& form)
 {
 	os << "Form \"" << form.getName()

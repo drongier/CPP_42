@@ -2,9 +2,7 @@
 #include "Form.hpp"
 #include <string>
 
-Bureaucrat::Bureaucrat() : _name("Default"), _grade(150) { 
-	std::cout << "Bureaucrat constructor called" << std::endl;
-}
+Bureaucrat::Bureaucrat() {}
 
 Bureaucrat::Bureaucrat( const std::string & name, int grade) : _name(name) {
 	std::cout << "Bureaucrat constructor called" << std::endl;
