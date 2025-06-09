@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: drongier <drongier@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/09 11:55:33 by drongier          #+#    #+#             */
+/*   Updated: 2025/06/09 11:55:34 by drongier         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 #include <iostream>
@@ -22,7 +34,7 @@ AForm::AForm(const AForm& src)
 AForm& AForm::operator=(const AForm& src)
 {
 	if (this != &src)
-		_signed = src._signed; // seuls attributs modifiables
+		_signed = src._signed; 
 	return *this;
 }
 

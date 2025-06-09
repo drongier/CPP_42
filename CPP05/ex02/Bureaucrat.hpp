@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: drongier <drongier@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/09 11:49:57 by drongier          #+#    #+#             */
+/*   Updated: 2025/06/09 11:50:46 by drongier         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 
@@ -25,7 +37,6 @@ public:
 	const std::string& getName() const;
 	int getGrade() const;
 
-	// Méthodes de modification de grade
 	void incrementGrade();
 	void decrementGrade();
 

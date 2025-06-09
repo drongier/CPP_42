@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: drongier <drongier@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/09 11:57:55 by drongier          #+#    #+#             */
+/*   Updated: 2025/06/09 16:47:06 by drongier         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
@@ -9,7 +21,6 @@ int main() {
     std::cout << "\033[1;34m║             INTERN TESTS                  ║\033[0m\n";
     std::cout << "\033[1;34m╚═══════════════════════════════════════════╝\033[0m\n";
 
-    // Creating bureaucrats and intern
     Bureaucrat president("President", 1);
     Bureaucrat manager("Manager", 50);
     Bureaucrat intern_bureaucrat("InternBureaucrat", 150);
@@ -20,8 +31,6 @@ int main() {
         AForm* shrubForm = intern.makeForm("shrubbery creation", "backyard");
         if (shrubForm) {
             std::cout << *shrubForm << std::endl;
-            
-            // Test complete workflow
             manager.signForm(*shrubForm);
             manager.executeForm(*shrubForm);
             
@@ -37,7 +46,6 @@ int main() {
         if (robotForm) {
             std::cout << *robotForm << std::endl;
             
-            // Test complete workflow
             manager.signForm(*robotForm);
             president.executeForm(*robotForm);
             
@@ -53,7 +61,6 @@ int main() {
         if (pardonForm) {
             std::cout << *pardonForm << std::endl;
             
-            // Test complete workflow
             president.signForm(*pardonForm);
             president.executeForm(*pardonForm);
             
@@ -124,7 +131,6 @@ int main() {
             std::cout << *form2 << std::endl;
             std::cout << *form3 << std::endl;
             
-            // Clean up
             delete form1;
             delete form2;
             delete form3;
@@ -150,7 +156,6 @@ int main() {
         if (workflowForm) {
             std::cout << "Form created: " << *workflowForm << std::endl;
             
-            // Try with different bureaucrats
             std::cout << "\nTrying with intern bureaucrat (grade 150):\n";
             try {
                 intern_bureaucrat.signForm(*workflowForm);

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: drongier <drongier@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/09 11:49:45 by drongier          #+#    #+#             */
+/*   Updated: 2025/06/09 14:15:16 by drongier         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 #include <iostream>
@@ -22,7 +34,7 @@ AForm::AForm(const AForm& src)
 AForm& AForm::operator=(const AForm& src)
 {
 	if (this != &src)
-		_signed = src._signed; // seuls attributs modifiables
+		_signed = src._signed;
 	return *this;
 }
 
@@ -43,7 +55,6 @@ bool AForm::getIsSigned() const { return _signed; }
 int AForm::getGradeToSign() const { return _gradeToSign; }
 int AForm::getGradeToExecute() const { return _gradeToExecute; }
 
-// Fonction pour signer
 void AForm::beSigned(const Bureaucrat& b)
 {
 	if (b.getGrade() > _gradeToSign)
@@ -51,7 +62,6 @@ void AForm::beSigned(const Bureaucrat& b)
 	_signed = true;
 }
 
-// Surcharge de l'opérateur <<
 std::ostream& operator<<(std::ostream& os, const AForm& Aform)
 {
 	os << "AForm \"" << Aform.getName()

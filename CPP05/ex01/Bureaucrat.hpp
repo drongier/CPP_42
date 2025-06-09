@@ -19,11 +19,9 @@ public:
     Bureaucrat& operator=( const Bureaucrat& other );
     ~Bureaucrat();
 
-	// Getters
 	const std::string& getName() const;
 	int getGrade() const;
 
-	// Méthodes de modification de grade
 	void incrementGrade();
 	void decrementGrade();
 

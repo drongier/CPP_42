@@ -32,7 +32,7 @@ int main() {
 
     std::cout << "\n\033[1;31m═══ TEST : FORM CREATION INVALID (GRADE TOO HIGH) ═══\033[0m\n";
     try {
-        Form invalidForm1("InvalidForm1", 0, 30); // Grade 0 invalide
+        Form invalidForm1("InvalidForm1", 0, 30);
         std::cout << invalidForm1 << std::endl;
     }
     catch (std::exception& e) {
@@ -41,7 +41,7 @@ int main() {
 
     std::cout << "\n\033[1;31m═══ TEST : FORM CREATION INVALID (GRADE TOO LOW) ═══\033[0m\n";
     try {
-        Form invalidForm2("InvalidForm2", 50, 151); // Grade 151 invalide
+        Form invalidForm2("InvalidForm2", 50, 151);
         std::cout << invalidForm2 << std::endl;
     }
     catch (std::exception& e) {
@@ -56,14 +56,14 @@ int main() {
         std::cout << alice << std::endl;
         std::cout << importantForm << std::endl;
         
-        alice.signForm(importantForm); // Alice grade 25 >= required 30, should work
+        alice.signForm(importantForm);
         std::cout << importantForm << std::endl;
     }
     catch (std::exception& e) {
         std::cerr << "Exception: " << e.what() << std::endl;
     }
 
-    std::cout << "\n\033[1;31m═══ TEST 6: FAILED FORM SIGNING (GRADE TOO LOW) ═══\033[0m\n";
+    std::cout << "\n\033[1;31m═══ TEST : FAILED FORM SIGNING (GRADE TOO LOW) ═══\033[0m\n";
     try {
         Bureaucrat charlie("Charlie", 100);
         Form secretForm("SecretForm", 50, 30);
@@ -71,38 +71,8 @@ int main() {
         std::cout << charlie << std::endl;
         std::cout << secretForm << std::endl;
         
-        charlie.signForm(secretForm); // Charlie grade 100 < required 50, should fail
+        charlie.signForm(secretForm);
         std::cout << secretForm << std::endl;
-    }
-    catch (std::exception& e) {
-        std::cerr << "Exception: " << e.what() << std::endl;
-    }
-
-    std::cout << "\n\033[1;32m═══ TEST : DIRECT beSigned() CALL ═══\033[0m\n";
-    try {
-        Bureaucrat manager("Manager", 40);
-        Form report("Report", 45, 35);
-        
-        std::cout << manager << std::endl;
-        std::cout << report << std::endl;
-        
-        report.beSigned(manager); // Direct call to beSigned
-        std::cout << report << std::endl;
-    }
-    catch (std::exception& e) {
-        std::cerr << "Exception: " << e.what() << std::endl;
-    }
-
-    std::cout << "\n\033[1;31m═══ TEST : DIRECT beSigned() CALL - GRADE TOO LOW ═══\033[0m\n";
-    try {
-        Bureaucrat intern("Intern", 150);
-        Form vipForm("VIPForm", 10, 5);
-        
-        std::cout << intern << std::endl;
-        std::cout << vipForm << std::endl;
-        
-        vipForm.beSigned(intern); // Should throw exception
-        std::cout << vipForm << std::endl;
     }
     catch (std::exception& e) {
         std::cerr << "Exception: " << e.what() << std::endl;
@@ -116,7 +86,7 @@ int main() {
         std::cout << exactGrade << std::endl;
         std::cout << borderForm << std::endl;
         
-        exactGrade.signForm(borderForm); // Grade 42 == required 42, should work
+        exactGrade.signForm(borderForm);
         std::cout << borderForm << std::endl;
     }
     catch (std::exception& e) {
