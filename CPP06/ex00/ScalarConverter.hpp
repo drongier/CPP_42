@@ -10,7 +10,7 @@
 
 class ScalarConverter {
 private:
-    // Constructeurs privés pour empêcher l'instanciation
+
     ScalarConverter();
     ScalarConverter(const ScalarConverter& src);
     ScalarConverter& operator=(const ScalarConverter& src);

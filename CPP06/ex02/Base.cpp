@@ -4,12 +4,8 @@
 #include <ctime>
 
 Base* generate(void) {
-    static bool seeded = false;
-    if (!seeded) {
-        std::srand(std::time(NULL));
-        seeded = true;
-    }
     
+    std::srand(std::clock());
     int random = std::rand() % 3;
     
     switch (random) {

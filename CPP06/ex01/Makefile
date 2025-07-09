@@ -18,7 +18,7 @@ OBJ = $(SRC:.cpp=.o)
 
 CXXFLAGS	= -Wall -Wextra -Werror -g -std=c++98
 
-NAME	= Scalar
+NAME	= Serial
 
 RM = rm -f
 
