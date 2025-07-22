@@ -2,12 +2,25 @@
 #include <sstream>
 #include <iomanip>
 
-// Constructeurs privés (pas besoin d'implémentation)
+ScalarConverter::~ScalarConverter () {
 
+}
 
 // Détection du type char: 'c'
 bool ScalarConverter::isChar(const std::string& str) {
-    return (str.length() == 3 && str[0] == '\'' && str[2] == '\'');
+    size_t len = str.length();
+
+    if (len == 3) {
+        // 'x' ou "x"
+        char c0 = str[0];
+        char c2 = str[2];
+        if ((c0 == '\'' && c2 == '\'') || (c0 == '"' && c2 == '"')) {
+            return true;
+        }
+    } else if (len == 1) {
+        return true;
+    }
+    return false;
 }
 
 // Détection du type int: -42, 42, 0
@@ -79,29 +92,8 @@ bool ScalarConverter::isSpecial(const std::string& str) {
 
 // Conversion principale
 void ScalarConverter::convert(const std::string& str) {
-    if (isChar(str)) {
-        char c = str[1];
-        std::cout << "char: '" << c << "'" << std::endl;
-        std::cout << "int: " << static_cast<int>(c) << std::endl;
-        std::cout << "float: " << static_cast<float>(c) << ".0f" << std::endl;
-        std::cout << "double: " << static_cast<double>(c) << ".0" << std::endl;
-    }
-    else if (isSpecial(str)) {
-        std::cout << "char: impossible" << std::endl;
-        std::cout << "int: impossible" << std::endl;
-        
-        if (str == "nanf" || str == "nan") {
-            std::cout << "float: nanf" << std::endl;
-            std::cout << "double: nan" << std::endl;
-        } else if (str == "+inff" || str == "+inf") {
-            std::cout << "float: +inff" << std::endl;
-            std::cout << "double: +inf" << std::endl;
-        } else if (str == "-inff" || str == "-inf") {
-            std::cout << "float: -inff" << std::endl;
-            std::cout << "double: -inf" << std::endl;
-        }
-    }
-    else if (isInt(str)) {
+
+    if (isInt(str)) {
         std::stringstream ss(str);
         long long value;
         ss >> value;
@@ -130,6 +122,34 @@ void ScalarConverter::convert(const std::string& str) {
         std::cout << "float: " << static_cast<float>(intValue) << ".0f" << std::endl;
         std::cout << "double: " << static_cast<double>(intValue) << ".0" << std::endl;
     }
+
+    else if (isChar(str)) {
+    char c;
+        if (str.length() == 1)
+            c = str[0];
+     else
+            c = str[1];
+        std::cout << "char: '" << c << "'" << std::endl;
+        std::cout << "int: " << static_cast<int>(c) << std::endl;
+        std::cout << "float: " << static_cast<float>(c) << ".0f" << std::endl;
+        std::cout << "double: " << static_cast<double>(c) << ".0" << std::endl;
+    }
+    else if (isSpecial(str)) {
+        std::cout << "char: impossible" << std::endl;
+        std::cout << "int: impossible" << std::endl;
+        
+        if (str == "nanf" || str == "nan") {
+            std::cout << "float: nanf" << std::endl;
+            std::cout << "double: nan" << std::endl;
+        } else if (str == "+inff" || str == "+inf") {
+            std::cout << "float: +inff" << std::endl;
+            std::cout << "double: +inf" << std::endl;
+        } else if (str == "-inff" || str == "-inf") {
+            std::cout << "float: -inff" << std::endl;
+            std::cout << "double: -inf" << std::endl;
+        }
+    }
+
     else if (isFloat(str)) {
         std::string withoutF = str.substr(0, str.length() - 1);
         std::stringstream ss(withoutF);
