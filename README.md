@@ -17,11 +17,11 @@ Ex03:
             │ (Product)       │    │ (Product)       │    │ (Product)       │
             └─────────────────┘    └─────────────────┘    └─────────────────┘
 
-CPP 06 
+## CPP 06 
 
 Ex01 : 
 
-## Avantages convertion :
+*Avantages convertion :*
 
 - **Portabilité** : Les entiers sont plus faciles à manipuler que les pointeurs
 - **Transmission** : On peut envoyer des "références" d'objets via réseau
