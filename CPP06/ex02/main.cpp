@@ -9,13 +9,25 @@ int main() {
         
         std::cout << "Test " << i + 1 << ":" << std::endl;
         std::cout << "  identify(Base*): ";
-        identify(obj);
+        identify_ptr(obj);
         std::cout << "  identify(Base&): ";
-        identify(*obj);
+        identify_ref(*obj);
         std::cout << std::endl;
         
         delete obj;
     }
+    
+    // std::cout << "\n=== Testing with unsupported type D ===" << std::endl;
+    // Base* objD = new D();
+    
+    // std::cout << "Test with D:" << std::endl;
+    // std::cout << "  identify(Base*): ";
+    // identify_ptr(objD);
+    // std::cout << "  identify(Base&): ";
+    // identify_ref(*objD);
+    // std::cout << std::endl;
+    
+    // delete objD;
     
     return 0;
 }

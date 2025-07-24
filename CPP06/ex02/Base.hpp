@@ -11,7 +11,7 @@ class B : public Base {};
 class C : public Base {};
 
 Base* generate(void);
-void identify(Base* p);
-void identify(Base& p);
+void identify_ptr(Base* p);
+void identify_ref(Base& p);
 
 #endif
