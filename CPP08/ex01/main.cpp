@@ -12,12 +12,12 @@ std::cout << sp.shortestSpan() << std::endl;
 std::cout << sp.longestSpan() << std::endl;
 
 std::vector<int> bigNumbers;
-for (int i = 0; i < 10; i++) {
-    bigNumbers.push_back(rand());
+for (int i = 0; i < 100; i++) {
+    bigNumbers.push_back(i);
     std::cout << bigNumbers[i];
 }
 
-Span bigSpan(20);
+Span bigSpan(100);
 bigSpan.addRange(bigNumbers.begin(), bigNumbers.end());
 
 std::cout << "shortestSpan : " << bigSpan.shortestSpan() << std::endl;
