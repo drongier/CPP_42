@@ -4,6 +4,8 @@
 #include <vector>
 #include <stdexcept>
 #include <algorithm>
+#include <exception>
+#include <iostream>
 
 class Span {
 	private:
@@ -21,7 +23,31 @@ class Span {
 		
 		int shortestSpan() const;
 		int longestSpan() const;
+
+		template<typename Iterator>
+		void addRange(Iterator begin, Iterator end);
+
+		class SpanFullException : public std::exception {
+			public:
+				virtual const char* what() const throw() {
+					return "Container Full !";
+				}
+		};
+
+		class NoSpanException : public std::exception {
+			public:
+				virtual const char* what() const throw() {
+					return "Not enough elements to calculate span";
+				}
+		};
 		
 };
+
+template<typename Iterator>
+void Span::addRange(Iterator begin, Iterator end) {
+    for (Iterator it = begin; it != end; ++it) {
+        addNumber(*it);
+    }
+}
 
 #endif
