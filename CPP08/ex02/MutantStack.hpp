@@ -14,7 +14,6 @@ public:
     typedef typename std::stack<T>::container_type::reverse_iterator reverse_iterator;
     typedef typename std::stack<T>::container_type::const_reverse_iterator const_reverse_iterator;
     
-    // Constructeurs (utilise ceux de std::stack par défaut)
     MutantStack() : std::stack<T>() {}
     MutantStack(const MutantStack& src) : std::stack<T>(src) {}
     MutantStack& operator=(const MutantStack& src) {
@@ -25,7 +24,6 @@ public:
     }
     ~MutantStack() {}
     
-    // Méthodes d'itérateurs - accès au conteneur sous-jacent
     iterator begin() { return this->c.begin(); }
     iterator end() { return this->c.end(); }
     
