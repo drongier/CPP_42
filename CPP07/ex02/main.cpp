@@ -4,28 +4,28 @@
 #include <string>
 
 int main() {
-    std::cout << "=== Test constructeur par défaut ===" << std::endl;
+    std::cout << "=== Constructor empty array ===" << std::endl;
     Array<int> emptyArray;
-    std::cout << "Taille du tableau vide: " << emptyArray.size() << std::endl;
+    std::cout << "Size empty array : " << emptyArray.getSize() << std::endl;
     
-    std::cout << "\n=== Test constructeur avec taille ===" << std::endl;
+    std::cout << "\n=== Constructor array with size(x) ===" << std::endl;
     Array<int> intArray(5);
-    std::cout << "Taille du tableau d'entiers: " << intArray.size() << std::endl;
+    std::cout << "Size of array : " << intArray.getSize() << std::endl;
     
     // Initialisation des valeurs
-    for (unsigned int i = 0; i < intArray.size(); i++) {
+    for (unsigned int i = 0; i < intArray.getSize(); i++) {
         intArray[i] = i * 10;
     }
     
     std::cout << "Valeurs: ";
-    for (unsigned int i = 0; i < intArray.size(); i++) {
+    for (unsigned int i = 0; i < intArray.getSize(); i++) {
         std::cout << intArray[i] << " ";
     }
     std::cout << std::endl;
     
     std::cout << "\n=== Test constructeur de copie ===" << std::endl;
     Array<int> copyArray(intArray);
-    std::cout << "Taille de la copie: " << copyArray.size() << std::endl;
+    std::cout << "Taille de la copie: " << copyArray.getSize() << std::endl;
     
     // Modifier l'original pour tester la deep copy
     intArray[0] = 999;
@@ -35,7 +35,7 @@ int main() {
     std::cout << "\n=== Test opérateur d'assignation ===" << std::endl;
     Array<int> assignedArray;
     assignedArray = intArray;
-    std::cout << "Taille après assignation: " << assignedArray.size() << std::endl;
+    std::cout << "Taille après assignation: " << assignedArray.getSize() << std::endl;
     
     std::cout << "\n=== Test avec des strings ===" << std::endl;
     Array<std::string> stringArray(3);
@@ -43,7 +43,7 @@ int main() {
     stringArray[1] = "World";
     stringArray[2] = "Templates";
     
-    for (unsigned int i = 0; i < stringArray.size(); i++) {
+    for (unsigned int i = 0; i < stringArray.getSize(); i++) {
         std::cout << stringArray[i] << " ";
     }
     std::cout << std::endl;

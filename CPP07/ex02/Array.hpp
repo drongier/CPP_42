@@ -4,70 +4,34 @@
 #include <exception>
 #include <iostream>
 
-template<typename T>
+
+template<class T>
 class Array {
 private:
-    T* _array;
-    unsigned int _size;
+    unsigned int    _size;
+    T*              _array;
+
+    class OutOfBoundException: public std::exception {
+	public:
+		const char *what () const throw();
+	};
 
 public:
-    // Constructeur par défaut : tableau vide
-    Array() : _array(NULL), _size(0) {}
-    
-    // Constructeur avec taille : n éléments initialisés par défaut
-    Array(unsigned int n) : _array(NULL), _size(n) {
-        if (n > 0) {
-            _array = new T[n]();  // () pour initialisation par défaut
-        }
-    }
-    
-    // Constructeur de copie
-    Array(const Array& src) : _array(NULL), _size(0) {
-        *this = src;
-    }
-    
-    // Destructeur
-    ~Array() {
-        delete[] _array;
-    }
-    
-    // Opérateur d'assignation
-    Array& operator=(const Array& src) {
-        if (this != &src) {
-            delete[] _array;
-            _size = src._size;
-            if (_size > 0) {
-                _array = new T[_size];
-                for (unsigned int i = 0; i < _size; i++) {
-                    _array[i] = src._array[i];
-                }
-            } else {
-                _array = NULL;
-            }
-        }
-        return *this;
-    }
-    
-    // Opérateur de subscript (lecture/écriture)
-    T& operator[](unsigned int index) {
-        if (index >= _size) {
-            throw std::exception();
-        }
-        return _array[index];
-    }
-    
-    // Opérateur de subscript (lecture seule)
-    const T& operator[](unsigned int index) const {
-        if (index >= _size) {
-            throw std::exception();
-        }
-        return _array[index];
-    }
-    
-    // Fonction size
-    unsigned int size() const {
-        return _size;
-    }
+    Array();
+    Array(unsigned int n);
+    Array( const Array& src);
+    Array& operator=(const Array& src);
+    ~Array();
+
+    T&			operator[](const unsigned int i);
+	const T&	operator[](const unsigned int i) const;
+
+    unsigned int	getSize(void) const;
 };
+
+template <class T>
+std::ostream&	operator<<( std::ostream& os, const Array<T>& arr );
+
+#include "Array.tpp"
 
 #endif
