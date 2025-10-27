@@ -55,14 +55,14 @@ const char    *Array<T>::OutOfBoundException::what(void) const throw() {
 
 template <class T>
 std::ostream& operator<<( std::ostream& os, const Array<T>& arr ) {
-	if (!arr.size())
+	if (!arr.getSize())
 		os << "{ }";
 	else {
 		os << "{ ";
-		for (unsigned int i = 0; i < arr.size() - 1; ++i) {
+		for (unsigned int i = 0; i < arr.getSize() - 1; ++i) {
 			os << arr[i] << " , ";
 		}
-		os << arr[arr.size() - 1] << " }";
+		os << arr[arr.getSize() - 1] << " }";
 	}
 	return (os);
 }

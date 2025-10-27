@@ -4,63 +4,62 @@
 #include <string>
 
 int main() {
+
+    //Empty array
     std::cout << "=== Constructor empty array ===" << std::endl;
     Array<int> emptyArray;
     std::cout << "Size empty array : " << emptyArray.getSize() << std::endl;
     
+
+    //array with size(x)
     std::cout << "\n=== Constructor array with size(x) ===" << std::endl;
     Array<int> intArray(5);
     std::cout << "Size of array : " << intArray.getSize() << std::endl;
-    
-    // Initialisation des valeurs
+
     for (unsigned int i = 0; i < intArray.getSize(); i++) {
         intArray[i] = i * 10;
     }
+    std::cout << "Values: " << intArray << std::endl;
     
-    std::cout << "Valeurs: ";
-    for (unsigned int i = 0; i < intArray.getSize(); i++) {
-        std::cout << intArray[i] << " ";
-    }
-    std::cout << std::endl;
-    
-    std::cout << "\n=== Test constructeur de copie ===" << std::endl;
+    //Constructor copy
+    std::cout << "\n=== Test copy constructor ===" << std::endl;
     Array<int> copyArray(intArray);
-    std::cout << "Taille de la copie: " << copyArray.getSize() << std::endl;
-    
-    // Modifier l'original pour tester la deep copy
-    intArray[0] = 999;
-    std::cout << "Original[0] après modification: " << intArray[0] << std::endl;
-    std::cout << "Copie[0] (doit rester inchangé): " << copyArray[0] << std::endl;
-    
+    std::cout << "Copy size: " << copyArray.getSize() << std::endl;
+
+    intArray[0] = 28;
+    std::cout << "Original[0] after change: " << intArray[0] << std::endl;
+    std::cout << "Copie[0] : " << copyArray[0] << std::endl;
+
+
     std::cout << "\n=== Test opérateur d'assignation ===" << std::endl;
     Array<int> assignedArray;
     assignedArray = intArray;
-    std::cout << "Taille après assignation: " << assignedArray.getSize() << std::endl;
+    std::cout << "assignedArray = intArray" << std::endl;
+    std::cout << "Size after assignation : " << assignedArray.getSize() << std::endl;
+    std::cout << "AssignedArray[0] = " << assignedArray[0] << std::endl;
     
-    std::cout << "\n=== Test avec des strings ===" << std::endl;
-    Array<std::string> stringArray(3);
+    std::cout << "\n=== Test with strings ===" << std::endl;
+    Array<std::string> stringArray(2);
     stringArray[0] = "Hello";
     stringArray[1] = "World";
-    stringArray[2] = "Templates";
     
     for (unsigned int i = 0; i < stringArray.getSize(); i++) {
         std::cout << stringArray[i] << " ";
     }
     std::cout << std::endl;
     
-    std::cout << "\n=== Test des exceptions ===" << std::endl;
+    std::cout << "\n=== Test exceptions ===" << std::endl;
     try {
-        std::cout << "Tentative d'accès hors limites..." << std::endl;
-        std::cout << intArray[100] << std::endl;
+        std::cout << "Try to acces out of range (intArray[6]) : " << std::endl;
+        std::cout << intArray[6] << std::endl;
     } catch (const std::exception& e) {
-        std::cout << "Exception attrapée pour accès hors limites" << std::endl;
+        std::cout << e.what() << std::endl;
     }
-    
     try {
-        std::cout << "Tentative d'accès hors limites sur tableau vide..." << std::endl;
+        std::cout << "Try to acces empty array" << std::endl;
         std::cout << emptyArray[0] << std::endl;
     } catch (const std::exception& e) {
-        std::cout << "Exception attrapée pour tableau vide" << std::endl;
+        std::cout << e.what() << std::endl;
     }
     
     return 0;
