@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Array.tpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: drongier <drongier@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/27 12:55:36 by drongier          #+#    #+#             */
+/*   Updated: 2025/10/27 13:09:08 by drongier         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Array.hpp"
 
 template <class T>
@@ -15,8 +27,8 @@ Array<T>::Array(const Array<T>& src) : _size(src._size), _array(new T[_size]) {
 
 template <class T>
 Array<T>& Array<T>::operator=(const Array<T>& src) {
-    if (this != &src) {
-        _size = src._size;
+	if (this != &src) {
+		_size = src._size;
 		delete[] _array;
 		_array = new T[_size];
 		for (unsigned int i = 0; i < _size; ++i) {
@@ -49,8 +61,8 @@ const T& Array<T>::operator[]( const unsigned int i ) const {
 }
 
 template<typename T>
-const char    *Array<T>::OutOfBoundException::what(void) const throw() {
-    return ("error: index out");
+const char	*Array<T>::OutOfBoundException::what(void) const throw() {
+	return ("error: index out");
 }
 
 template <class T>
@@ -58,11 +70,11 @@ std::ostream& operator<<( std::ostream& os, const Array<T>& arr ) {
 	if (!arr.getSize())
 		os << "{ }";
 	else {
-		os << "{ ";
+		os << "{";
 		for (unsigned int i = 0; i < arr.getSize() - 1; ++i) {
 			os << arr[i] << " , ";
 		}
-		os << arr[arr.getSize() - 1] << " }";
+		os << arr[arr.getSize() - 1] << "}";
 	}
 	return (os);
 }
