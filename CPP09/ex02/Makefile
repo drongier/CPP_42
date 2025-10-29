@@ -6,11 +6,11 @@
 #    By: drongier <drongier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 15:45:27 by drongier          #+#    #+#              #
-#    Updated: 2025/05/16 17:23:41 by drongier         ###   ########.fr        #
+#    Updated: 2025/10/28 16:34:26 by drongier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = main.cpp
+SRC = main.cpp PmergeMe.cpp
 
 CXX 		= c++
 
@@ -18,7 +18,7 @@ OBJ = $(SRC:.cpp=.o)
 
 CXXFLAGS	= -Wall -Wextra -Werror -g -std=c++98
 
-NAME	= Array
+NAME	= pmerge
 
 RM = rm -f
 
