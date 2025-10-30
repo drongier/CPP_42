@@ -11,7 +11,9 @@
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
-#include <cstdlib> // pour std::atoi
+#include <cstdlib>
+#include <ctime>
+#include <iomanip>
 
 // 1. main(argc, argv)
 //    ↓
@@ -47,17 +49,40 @@ int	main(int ac, char **av) {
 	
 	pmerge pm;
 	
+	// 1) extract av[i] and save into vector numbers
 	for (int i = 1; i < ac; i++) {
+		//add parsing number
 		int n = std::atoi(av[i]);
-		pm.addToNumber(n);
+		pm.addToVector(n);
+		pm.addToDeque(n);
 	}
-
 	std::cout << "Before : ";
 	pm.printNumber();
 
 	std::vector<int> numbers = pm.getNumbers();
-	std::vector<Pair> mesPaires = pm.makePaire(numbers);
+	std::deque<int> deque = pm.getDeque();
 
-	std::cout << "1st pairs, sorted : ";
-	pm.printPairs(mesPaires);
+	//VECTOR TEST TIME 
+	clock_t start = clock();
+	pm.fordJohnson(numbers);
+	clock_t end = clock();
+	// std::cout << "After : ";
+	// pm.printVector(final_vector);
+	double duration_us = ((double)(end - start) / CLOCKS_PER_SEC);
+	std::cout << std::fixed << std::setprecision(5);
+	std::cout << "Time to process a range of " << numbers.size()
+			<< " elements with std::vector : "
+			<< duration_us << "sec" << std::endl;
+	
+	//DEQUE TEST TIME 
+	clock_t startDeque = clock();
+	pm.fordJohnsonDeque(deque);
+	clock_t endDeque = clock();
+	double duration_usDeque = ((double)(endDeque - startDeque) / CLOCKS_PER_SEC);
+	std::cout << std::fixed << std::setprecision(5);
+	std::cout << "Time to process a range of " << deque.size()
+			<< " elements with std::deque  : "
+			<< duration_usDeque << "sec" << std::endl;
+	
+	return (0);
 }
