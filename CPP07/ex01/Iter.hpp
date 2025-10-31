@@ -17,7 +17,7 @@
 #include <string>
 
 template<typename T>
-void	iter(T *arr, const size_t len, void fun(T &element))
+void	iter(T *arr, const size_t len, void fun(T const &element))
 {
 	for (size_t cur = 0; cur < len; cur++)
 		fun(arr[cur]);

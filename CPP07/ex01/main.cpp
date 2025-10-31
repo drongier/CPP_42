@@ -13,36 +13,21 @@
 #include "Iter.hpp"
 
 template<typename T>
-void	printElement(T& element) {
-	std::cout << element << " ";
+void	doubleValue(T const &element) {
+	std::cout << element * 2 << " ";
 }
 
 template<typename T>
-void	doubleValue(T& element) {
-	element *= 2;
-}
-
-template<typename T>
-void	plus28(T& element) {
-	element = element + 28;
-	std::cout << element << " ";
+void	plus2(T const &element) {
+	std::cout << element + 2 << " ";
 }
 
 int main() {
 
-	int intArray[5] = {1, 2, 3, 4, 5};
-	std::cout << "Original array: ";
-	iter(intArray, 5, printElement);
-	std::cout << std::endl << std::endl;;
-
+	int const intArray[5] = {1, 2, 3, 4, 5};
+	iter(intArray, 5, plus2);
+	std::cout << std::endl;
 	iter(intArray, 5, doubleValue);
-	std::cout << "After double: ";
-	iter(intArray, 5, printElement);
-	std::cout << std::endl << std::endl;
-
-	std::cout << "After +28: ";
-	iter(intArray, 5, plus28);
-	std::cout << std::endl << std::endl;
-
+	std::cout << std::endl;
 	return 0;
 }
