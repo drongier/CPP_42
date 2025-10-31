@@ -14,6 +14,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <iomanip>
+#include <sys/time.h>
 
 
 int	main(int ac, char **av) {
@@ -22,34 +23,32 @@ int	main(int ac, char **av) {
 	
 	std::vector<int> vector;
 	std::deque<int> deque;
+	struct timeval ts1;
+	struct timeval ts2;
 	
 	if (!pm.parseInput(ac, av, vector, deque)) {
 		return 1;
 	}
 	std::cout << "Before : ";
-	pm.printVector(vector);
-
-	//VECTOR TEST TIME 
-	clock_t start = clock();
-	std::vector<int> final_vector = pm.fordJohnson(vector);
-	clock_t end = clock();
-	std::cout << "After : ";
-	pm.printVector(final_vector);
-	double duration_us = ((double)(end - start) / CLOCKS_PER_SEC);
-	std::cout << std::fixed << std::setprecision(5);
-	std::cout << "Time to process a range of " << vector.size()
-			<< " elements with std::vector : "
-			<< duration_us << "sec" << std::endl;
+	pm.printVector(deque);
 	
 	//DEQUE TEST TIME 
-	clock_t startDeque = clock();
+	gettimeofday(&ts1, NULL);
 	std::deque<int> final_deque = pm.fordJohnsonDeque(deque);
-	clock_t endDeque = clock();
-	double duration_usDeque = ((double)(endDeque - startDeque) / CLOCKS_PER_SEC);
-	std::cout << std::fixed << std::setprecision(5);
+	gettimeofday(&ts2, NULL);
+	std::cout << "After : ";
+	pm.printVector(final_deque);
 	std::cout << "Time to process a range of " << deque.size()
-			<< " elements with std::deque  : "
-			<< duration_usDeque << "sec" << std::endl;
+			<< " elements with std::deque  : ";
+	pm.display_time(ts1, ts2);
+	
+	//VECTOR TEST TIME 
+	gettimeofday(&ts1, NULL);
+	std::vector<int> final_vector = pm.fordJohnson(vector);
+	gettimeofday(&ts2, NULL);
+	std::cout << "Time to process a range of " << vector.size()
+	<< " elements with std::vector : ";
+	pm.display_time(ts1, ts2);
 	
 	return (0);
 }

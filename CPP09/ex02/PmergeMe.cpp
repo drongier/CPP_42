@@ -18,6 +18,17 @@ void pmerge::printNumber() const {
 	std::cout << std::endl;
 }
 
+void pmerge::display_time(struct timeval& ts1, struct timeval& ts2)
+{
+    size_t total_micros1 = ts1.tv_sec * MIL + ts1.tv_usec;
+    size_t total_micros2 = ts2.tv_sec * MIL + ts2.tv_usec;
+    size_t diff_micros = total_micros2 - total_micros1;
+    size_t sec = diff_micros / MIL;
+    size_t msec = (diff_micros % MIL) / 1000;
+    size_t usec = (diff_micros % MIL) % 1000;
+    std::cout << sec << " secs, " << msec << " ms and " << usec << " us." << std::endl;
+}
+
 bool isPositiveInteger(const std::string& str) {
 	if (str.empty())
 		return false;
@@ -52,9 +63,9 @@ void printVector(const std::vector<int>& vect) {
 	std::cout << std::endl;
 }
 
-void pmerge::printVector(const std::vector<int>& vect) {
-	if (vect.size() > 10) {
-			for (size_t i = 0; i < 10; ++i) {
+void pmerge::printVector(const std::deque<int>& vect) {
+	if (vect.size() > 20) {
+			for (size_t i = 0; i < 20; ++i) {
 			std::cout << vect[i] << " ";
 		}
 		std::cout << "[...]" << std::endl;

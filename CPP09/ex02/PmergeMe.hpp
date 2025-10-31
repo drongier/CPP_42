@@ -2,6 +2,8 @@
 #include <deque>
 #include <iostream>
 
+#define MIL 1000000
+
 struct Pair {
 	int a;
 	int b;
@@ -19,8 +21,9 @@ class pmerge {
 		void addToDeque(int value);
 		void printNumber() const;
 		void printPairs(const std::vector<Pair>& pairs);
-		void printVector(const std::vector<int>& vect);
+		void printVector(const std::deque<int>& vect);
 		std::vector<int> fordJohnson(const std::vector<int>& input);
 		std::deque<int> fordJohnsonDeque(const std::deque<int>& input);
 		bool parseInput(int argc, char** argv, std::vector<int>& vec, std::deque<int>& deq);
+		void display_time(struct timeval& ts1, struct timeval& ts2);
 };
