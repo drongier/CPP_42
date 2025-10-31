@@ -6,7 +6,7 @@
 /*   By: drongier <drongier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 15:44:51 by drongier          #+#    #+#             */
-/*   Updated: 2025/10/29 16:29:08 by drongier         ###   ########.fr       */
+/*   Updated: 2025/10/31 13:15:10 by drongier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@ int	main(int ac, char **av) {
 		return 1;
 	}
 	std::cout << "Before : ";
-	pm.printVector(deque);
+	pm.printDeque(deque);
 	
 	//DEQUE TEST TIME 
 	gettimeofday(&ts1, NULL);
 	std::deque<int> final_deque = pm.fordJohnsonDeque(deque);
 	gettimeofday(&ts2, NULL);
 	std::cout << "After : ";
-	pm.printVector(final_deque);
+	pm.printDeque(final_deque);
 	std::cout << "Time to process a range of " << deque.size()
 			<< " elements with std::deque  : ";
 	pm.display_time(ts1, ts2);

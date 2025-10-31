@@ -63,9 +63,9 @@ void printVector(const std::vector<int>& vect) {
 	std::cout << std::endl;
 }
 
-void pmerge::printVector(const std::deque<int>& vect) {
-	if (vect.size() > 20) {
-			for (size_t i = 0; i < 20; ++i) {
+void pmerge::printDeque(const std::deque<int>& vect) {
+	if (vect.size() > 15) {
+			for (size_t i = 0; i < 15; ++i) {
 			std::cout << vect[i] << " ";
 		}
 		std::cout << "[...]" << std::endl;
