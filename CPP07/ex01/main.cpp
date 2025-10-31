@@ -6,7 +6,7 @@
 /*   By: drongier <drongier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 16:47:49 by drongier          #+#    #+#             */
-/*   Updated: 2025/10/27 16:47:50 by drongier         ###   ########.fr       */
+/*   Updated: 2025/10/31 17:39:39 by drongier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	doubleValue(T const &element) {
 }
 
 template<typename T>
-void	plus2(T const &element) {
+void	plus2(T &element) {
 	std::cout << element + 2 << " ";
 }
 
