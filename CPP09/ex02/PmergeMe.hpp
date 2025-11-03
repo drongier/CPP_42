@@ -1,3 +1,6 @@
+#ifndef PMERGEME_HPP
+#define PMERGEME_HPP
+
 #include <vector>
 #include <deque>
 #include <iostream>
@@ -30,3 +33,5 @@ class pmerge {
 		bool parseInput(int argc, char** argv, std::vector<int>& vec, std::deque<int>& deq);
 		void display_time(struct timeval& ts1, struct timeval& ts2);
 };
+
+#endif

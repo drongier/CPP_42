@@ -1,4 +1,7 @@
 #include "PmergeMe.hpp"
+#include <cstdlib>
+#include <string>
+#include <sys/time.h>
 
 pmerge::pmerge() {}
 
@@ -183,7 +186,7 @@ int findUnpaired(const std::vector<Pair>& pairs) {
 
 	const Pair& last = pairs.back();
 	if (last.b == -1)
-		return last.a; // C'est l'élément non apparié
+		return last.a; 
 	return -1;
 }
 
@@ -193,7 +196,7 @@ int findUnpairedDeque(const std::deque<Pair>& pairs) {
 
     const Pair& last = pairs.back();
     if (last.b == -1)
-        return last.a; // C'est l'élément non apparié
+        return last.a;
     return -1;
 }
 
@@ -335,7 +338,7 @@ std::vector<int> pmerge::fordJohnson(const std::vector<int>& input) {
 
 std::deque<int> pmerge::fordJohnsonDeque(const std::deque<int>& input){
 
-	    if (input.size() <= 1)
+	if (input.size() <= 1)
         return input;
 
     // 1. Créer les paires
