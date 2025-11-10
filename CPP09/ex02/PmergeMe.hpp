@@ -34,4 +34,114 @@ class pmerge {
 		void display_time(struct timeval& ts1, struct timeval& ts2);
 };
 
+template<typename PairContainer, typename IntContainer>
+IntContainer extractWinners(const PairContainer& pairs) {
+	IntContainer winners;
+	for (size_t i = 0; i < pairs.size(); ++i) {
+		if (pairs[i].b != -1) {
+			winners.push_back(pairs[i].a);
+		}
+	}
+	return winners;
+}
+
+template<typename PairContainer, typename IntContainer>
+IntContainer extractLosers(const PairContainer& pairs) {
+	IntContainer losers;
+	for (size_t i = 0; i < pairs.size(); ++i) {
+		if (pairs[i].b != -1) {
+			losers.push_back(pairs[i].b);
+		}
+	}
+	return losers;
+}
+
+template<typename Container>
+int findUnpaired(const Container& pairs) {
+	if (pairs.empty())
+		return -1;
+	const Pair& last = pairs.back();
+	if (last.b == -1)
+		return last.a;
+	return -1;
+}
+
+template<typename IntContainer, typename PairContainer>
+PairContainer makePaire(const IntContainer& input) {
+	PairContainer pairs;
+	for (size_t i = 0; i + 1 < input.size(); i += 2) {
+		int x = input[i];
+		int y = input[i + 1];
+		Pair p;
+		if (x > y) {
+			p.a = x;
+			p.b = y;
+		} else {
+			p.a = y;
+			p.b = x;
+		}
+		pairs.push_back(p);
+	}
+	if (input.size() % 2 != 0) {
+		Pair p;
+		p.a = input.back();
+		p.b = -1;
+		pairs.push_back(p);
+	}
+	return pairs;
+}
+
+template<typename Container>
+Container generateJacobsthalOrder(size_t n) {
+	Container jacobsthal;
+	jacobsthal.push_back(1);
+	size_t j0 = 0, j1 = 1;
+
+	while (true) {
+		size_t next = j1 + 2 * j0;
+		if (next >= n)
+			break;
+		jacobsthal.push_back(next);
+		j0 = j1;
+		j1 = next;
+	}
+
+	Container order;
+	if (n == 0)
+		return order;
+	order.push_back(0);
+
+	for (size_t i = 1; i < jacobsthal.size(); ++i) {
+		size_t current = jacobsthal[i];
+		size_t previous = jacobsthal[i-1];
+		for (size_t j = current - 1; j > previous; --j) {
+			if (j < n)
+				order.push_back(j);
+		}
+		if (current < n)
+			order.push_back(current);
+	}
+	for (size_t i = 0; i < n; ++i) {
+		if (std::find(order.begin(), order.end(), i) == order.end())
+			order.push_back(i);
+	}
+
+	return order;
+}
+
+template<typename Container>
+size_t binaryInsertPosition(const Container& vec, int value) {
+	size_t left = 0;
+	size_t right = vec.size();
+
+	while (left < right) {
+		size_t mid = left + (right - left) / 2;
+		if (vec[mid] < value)
+			left = mid + 1;
+		else
+			right = mid;
+	}
+	return left;
+}
+
 #endif
