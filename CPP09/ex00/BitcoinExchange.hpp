@@ -7,16 +7,16 @@
 #include <cstdlib> 
 
 class BitcoinExchange {
-    private:
-        std::map<std::string, double> _database;
-        void loadDatabase(const std::string& csv);
-        bool isValidDate(const std::string& date);
-        double getPrice(const std::string& date);
-        bool isNumeric(const std::string& str, double& value);
+	private:
+		std::map<std::string, double> _database;
+		void 	loadDatabase(const std::string& csv);
+		bool 	isValidDate(const std::string& date);
+		double 	getPrice(const std::string& date);
+		bool 	isNumeric(const std::string& str, double& value);
 
-    public:
-        BitcoinExchange();
-        void processInput(const std::string& inputFile);
+	public:
+		BitcoinExchange();
+		void processInput(const std::string& inputFile);
 };
 
 #endif

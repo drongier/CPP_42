@@ -2,14 +2,12 @@
 
 int main(int ac, char **av) {
 
-    if (ac != 2)
-        throw "Error : input";
-    
-    RPN rpn;
+	if (ac != 2)
+		throw "Error : input";
 
-    int result = rpn.calculate(av[1]);
+	RPN rpn;
+	int result = rpn.calculate(av[1]);
+	std::cout << result << std::endl;
 
-    std::cout << result << std::endl;
-
-    return(0); 
+	return(0); 
 }

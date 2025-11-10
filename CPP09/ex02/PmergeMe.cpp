@@ -23,13 +23,13 @@ void pmerge::printNumber() const {
 
 void pmerge::display_time(struct timeval& ts1, struct timeval& ts2)
 {
-    size_t total_micros1 = ts1.tv_sec * MIL + ts1.tv_usec;
-    size_t total_micros2 = ts2.tv_sec * MIL + ts2.tv_usec;
-    size_t diff_micros = total_micros2 - total_micros1;
-    size_t sec = diff_micros / MIL;
-    size_t msec = (diff_micros % MIL) / 1000;
-    size_t usec = (diff_micros % MIL) % 1000;
-    std::cout << sec << " secs, " << msec << " ms and " << usec << " us." << std::endl;
+	size_t total_micros1 = ts1.tv_sec * MIL + ts1.tv_usec;
+	size_t total_micros2 = ts2.tv_sec * MIL + ts2.tv_usec;
+	size_t diff_micros = total_micros2 - total_micros1;
+	size_t sec = diff_micros / MIL;
+	size_t msec = (diff_micros % MIL) / 1000;
+	size_t usec = (diff_micros % MIL) % 1000;
+	std::cout << sec << " secs, " << msec << " ms and " << usec << " us." << std::endl;
 }
 
 bool isPositiveInteger(const std::string& str) {
@@ -99,23 +99,23 @@ std::vector<int> extractWinners(const std::vector<Pair>& pairs) {
 }
 
 std::deque<int> extractWinnersDeque(const std::deque<Pair>& pairs) {
-    std::deque<int> winners;
-    for (size_t i = 0; i < pairs.size(); ++i) {
-        if (pairs[i].b != -1) {
-            winners.push_back(pairs[i].a);
-        }
-    }
-    return winners;
+	std::deque<int> winners;
+	for (size_t i = 0; i < pairs.size(); ++i) {
+		if (pairs[i].b != -1) {
+			winners.push_back(pairs[i].a);
+		}
+	}
+	return winners;
 }
 
 std::vector<int> extractLosers(const std::vector<Pair>& pairs) {
-    std::vector<int> losers;
-    for (size_t i = 0; i < pairs.size(); ++i) {
-        if (pairs[i].b != -1) {
-            losers.push_back(pairs[i].b);
-        }
-    }
-    return losers;
+	std::vector<int> losers;
+	for (size_t i = 0; i < pairs.size(); ++i) {
+		if (pairs[i].b != -1) {
+			losers.push_back(pairs[i].b);
+		}
+	}
+	return losers;
 }
 
 std::deque<int> extractLosersDeque(const std::deque<Pair>& pairs) {
@@ -233,11 +233,11 @@ std::vector<size_t> generateJacobsthalOrder(size_t n) {
 			order.push_back(current);
 	}
     // Compléter si tous les losers n'ont pas été insérés
-    for (size_t i = 0; i < n; ++i) {
-        if (std::find(order.begin(), order.end(), i) == order.end())
-            order.push_back(i);
-    }
-    return order;
+	for (size_t i = 0; i < n; ++i) {
+		if (std::find(order.begin(), order.end(), i) == order.end())
+			order.push_back(i);
+	}
+	return order;
 }
 
 std::deque<size_t> generateJacobsthalOrderDeque(size_t n) {
@@ -311,8 +311,8 @@ size_t binaryInsertPositionDeque(const std::deque<int>& vec, int value) {
 std::vector<int> pmerge::fordJohnson(const std::vector<int>& input) {
 	if (input.size() <= 1)
 		return input;
-    // 1. Créer les paires
-    std::vector<Pair> pairs = makePaire(input);
+	// 1. Créer les paires
+	std::vector<Pair> pairs = makePaire(input);
 
     // 2. Extraire winners et losers
     std::vector<int> winners = extractWinners(pairs);
@@ -323,7 +323,7 @@ std::vector<int> pmerge::fordJohnson(const std::vector<int>& input) {
     // 4. Générer l’ordre Jacobsthal et insérer les losers
     std::vector<size_t> order = generateJacobsthalOrder(losers.size());
 	for (size_t i = 0; i < order.size(); ++i) {
-		size_t idx = order[i];
+		size_t idx = order[i]; // 1, 1, 3, 5 ...
 		int val = losers[idx];
 		size_t pos = binaryInsertPosition(main_chain, val);
 		main_chain.insert(main_chain.begin() + pos, val);
