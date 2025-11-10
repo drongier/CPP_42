@@ -6,11 +6,11 @@
 #    By: drongier <drongier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 15:45:27 by drongier          #+#    #+#              #
-#    Updated: 2025/11/10 17:28:01 by drongier         ###   ########.fr        #
+#    Updated: 2025/11/10 18:30:31 by drongier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = main.cpp PmergeMe_template.cpp
+SRC = main.cpp PmergeMe.cpp
 
 CXX 		= c++
 

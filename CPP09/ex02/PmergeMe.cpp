@@ -88,283 +88,55 @@ void pmerge::printPairs(const std::vector<Pair>& pairs) {
 	std::cout << std::endl;
 }
 
-std::vector<int> extractWinners(const std::vector<Pair>& pairs) {
-	std::vector<int> winners;
-	for (size_t i = 0; i < pairs.size(); ++i) {
-		if (pairs[i].b != -1) {
-			winners.push_back(pairs[i].a);
-		}
-	}
-	return winners;
-}
-
-std::deque<int> extractWinnersDeque(const std::deque<Pair>& pairs) {
-	std::deque<int> winners;
-	for (size_t i = 0; i < pairs.size(); ++i) {
-		if (pairs[i].b != -1) {
-			winners.push_back(pairs[i].a);
-		}
-	}
-	return winners;
-}
-
-std::vector<int> extractLosers(const std::vector<Pair>& pairs) {
-	std::vector<int> losers;
-	for (size_t i = 0; i < pairs.size(); ++i) {
-		if (pairs[i].b != -1) {
-			losers.push_back(pairs[i].b);
-		}
-	}
-	return losers;
-}
-
-std::deque<int> extractLosersDeque(const std::deque<Pair>& pairs) {
-	std::deque<int> losers;
-	for (size_t i = 0; i < pairs.size(); ++i) {
-		if (pairs[i].b != -1) {
-			losers.push_back(pairs[i].b);
-		}
-	}
-	return losers;
-}
-
-std::vector<Pair> makePaire(const std::vector<int>& input) {
-	std::vector<Pair> pairs;
-
-	for (size_t i = 0; i + 1 < input.size(); i += 2) {
-		int x = input[i];
-		int y = input[i + 1];
-		Pair p;
-		if (x > y) {
-			p.a = x;
-			p.b = y;
-		}
-		else {
-			p.a = y;
-			p.b = x;
-		}	
-		pairs.push_back(p);
-	}
-	if (input.size() % 2 != 0) {
-		Pair p;
-		p.a = input.back();
-		p.b = -1; 
-		pairs.push_back(p);
-	}
-	return pairs;
-}
-
-std::deque<Pair> makePaireDeque(const std::deque<int>& input) {
-	std::deque<Pair> pairs;
-
-	for (size_t i = 0; i + 1 < input.size(); i += 2) {
-		int x = input[i];
-		int y = input[i + 1];
-		Pair p;
-		if (x > y) {
-			p.a = x;
-			p.b = y;
-		}
-		else {
-			p.a = y;
-			p.b = x;
-		}	
-		pairs.push_back(p);
-	}
-	if (input.size() % 2 != 0) {
-		Pair p;
-		p.a = input.back();
-		p.b = -1; 
-		pairs.push_back(p);
-	}
-	return pairs;
-}
-
-int findUnpaired(const std::vector<Pair>& pairs) {
-	if (pairs.empty())
-		return -1;
-
-	const Pair& last = pairs.back();
-	if (last.b == -1)
-		return last.a; 
-	return -1;
-}
-
-int findUnpairedDeque(const std::deque<Pair>& pairs) {
-	if (pairs.empty())
-		return -1;
-
-    const Pair& last = pairs.back();
-    if (last.b == -1)
-        return last.a;
-    return -1;
-}
-
-std::vector<size_t> generateJacobsthalOrder(size_t n) {
-	std::vector<size_t> jacobsthal;
-	jacobsthal.push_back(1); // J(1)
-	size_t j0 = 0, j1 = 1;
-
-	// Générer la séquence Jacobsthal jusqu'à n
-	while (true) {
-		size_t next = j1 + 2 * j0;
-		if (next >= n)
-			break;
-		jacobsthal.push_back(next);
-		j0 = j1;
-		j1 = next;
-	}
-
-	// Construire l'ordre d'insertion
-	std::vector<size_t> order;
-	if (n == 0)
-		return order;
-	order.push_back(0); // Toujours insérer le premier loser
-
-	for (size_t i = 1; i < jacobsthal.size(); ++i) {
-		size_t current = jacobsthal[i];
-		size_t previous = jacobsthal[i-1];
-		// Insérer de current-1 jusqu'à previous (décroissant)
-		for (size_t j = current - 1; j > previous; --j) {
-		if (j < n)
-			order.push_back(j);
-		}
-		if (current < n)
-			order.push_back(current);
-	}
-    // Compléter si tous les losers n'ont pas été insérés
-	for (size_t i = 0; i < n; ++i) {
-		if (std::find(order.begin(), order.end(), i) == order.end())
-			order.push_back(i);
-	}
-	return order;
-}
-
-std::deque<size_t> generateJacobsthalOrderDeque(size_t n) {
-    std::deque<size_t> jacobsthal;
-    jacobsthal.push_back(1); // J(1)
-    size_t j0 = 0, j1 = 1;
-
-    // Générer la séquence Jacobsthal jusqu'à n
-    while (true) {
-		size_t next = j1 + 2 * j0;
-        if (next >= n)
-            break;
-        jacobsthal.push_back(next);
-        j0 = j1;
-        j1 = next;
-    }
-
-    // Construire l'ordre d'insertion
-    std::deque<size_t> order;
-    if (n == 0)
-        return order;
-    order.push_back(0); // Toujours insérer le premier loser
-
-    for (size_t i = 1; i < jacobsthal.size(); ++i) {
-        size_t current = jacobsthal[i];
-        size_t previous = jacobsthal[i-1];
-        // Insérer de current-1 jusqu'à previous (décroissant)
-        for (size_t j = current - 1; j > previous; --j) {
-            if (j < n)
-                order.push_back(j);
-        }
-        if (current < n)
-            order.push_back(current);
-    }
-    // Compléter si tous les losers n'ont pas été insérés
-    for (size_t i = 0; i < n; ++i) {
-        if (std::find(order.begin(), order.end(), i) == order.end())
-            order.push_back(i);
-    }
-    return order;
-}
-
-size_t binaryInsertPosition(const std::vector<int>& vec, int value) {
-    size_t left = 0;
-    size_t right = vec.size();
-
-    while (left < right) {
-        size_t mid = left + (right - left) / 2;
-        if (vec[mid] < value)
-            left = mid + 1;
-        else
-            right = mid;
-    }
-    return left; // Position où insérer 'value'
-}
-
-size_t binaryInsertPositionDeque(const std::deque<int>& vec, int value) {
-    size_t left = 0;
-    size_t right = vec.size();
-
-    while (left < right) {
-        size_t mid = left + (right - left) / 2;
-        if (vec[mid] < value)
-            left = mid + 1;
-        else
-            right = mid;
-    }
-    return left; // Position où insérer 'value'
-}
-
+// Utilisation des templates (définis dans le .hpp)
 std::vector<int> pmerge::fordJohnson(const std::vector<int>& input) {
 	if (input.size() <= 1)
 		return input;
-	// 1. Créer les paires
-	std::vector<Pair> pairs = makePaire(input);
 
-    // 2. Extraire winners et losers
-    std::vector<int> winners = extractWinners(pairs);
-    std::vector<int> losers = extractLosers(pairs);
-    int unpaired = findUnpaired(pairs); // si b == -1
-    // 3. Appel récursif sur les winners
-    std::vector<int> main_chain = fordJohnson(winners);
-    // 4. Générer l’ordre Jacobsthal et insérer les losers
-    std::vector<size_t> order = generateJacobsthalOrder(losers.size());
+	std::vector<Pair> pairs = makePaire<std::vector<int>, std::vector<Pair> >(input);
+	std::vector<int> winners = extractWinners<std::vector<Pair>, std::vector<int> >(pairs);
+	std::vector<int> losers = extractLosers<std::vector<Pair>, std::vector<int> >(pairs);
+	int unpaired = findUnpaired(pairs);
+
+	std::vector<int> main_chain = fordJohnson(winners);
+
+	std::vector<size_t> order = generateJacobsthalOrder<std::vector<size_t> >(losers.size());
 	for (size_t i = 0; i < order.size(); ++i) {
-		size_t idx = order[i]; // 1, 1, 3, 5 ...
+		size_t idx = order[i];
 		int val = losers[idx];
 		size_t pos = binaryInsertPosition(main_chain, val);
 		main_chain.insert(main_chain.begin() + pos, val);
 	}
-    // 5. Insérer l’unpaired s’il existe
-    if (unpaired != -1) {
-        size_t pos = binaryInsertPosition(main_chain, unpaired);
-        main_chain.insert(main_chain.begin() + pos, unpaired);
-    }
-    return (main_chain);
+
+	if (unpaired != -1) {
+		size_t pos = binaryInsertPosition(main_chain, unpaired);
+		main_chain.insert(main_chain.begin() + pos, unpaired);
+	}
+	return main_chain;
 }
 
-std::deque<int> pmerge::fordJohnsonDeque(const std::deque<int>& input){
-
+std::deque<int> pmerge::fordJohnsonDeque(const std::deque<int>& input) {
 	if (input.size() <= 1)
-        return input;
+		return input;
 
-    // 1. Créer les paires
-    std::deque<Pair> pairs = makePaireDeque(input);
+	std::deque<Pair> pairs = makePaire<std::deque<int>, std::deque<Pair> >(input);
+	std::deque<int> winners = extractWinners<std::deque<Pair>, std::deque<int> >(pairs);
+	std::deque<int> losers = extractLosers<std::deque<Pair>, std::deque<int> >(pairs);
+	int unpaired = findUnpaired(pairs);
 
-    // 2. Extraire winners et losers
-    std::deque<int> winners = extractWinnersDeque(pairs);
-    std::deque<int> losers = extractLosersDeque(pairs);
-    int unpaired = findUnpairedDeque(pairs); // si b == -1
+	std::deque<int> main_chain = fordJohnsonDeque(winners);
 
-    // 3. Appel récursif sur les winners
-    std::deque<int> main_chain = fordJohnsonDeque(winners);
-
-    // 4. Générer l’ordre Jacobsthal et insérer les losers
-    std::deque<size_t> order = generateJacobsthalOrderDeque(losers.size());
+	std::deque<size_t> order = generateJacobsthalOrder<std::deque<size_t> >(losers.size());
 	for (size_t i = 0; i < order.size(); ++i) {
 		size_t idx = order[i];
 		int val = losers[idx];
-		size_t pos = binaryInsertPositionDeque(main_chain, val);
+		size_t pos = binaryInsertPosition(main_chain, val);
 		main_chain.insert(main_chain.begin() + pos, val);
 	}
 
-    // 5. Insérer l’unpaired s’il existe
-    if (unpaired != -1) {
-        size_t pos = binaryInsertPositionDeque(main_chain, unpaired);
-        main_chain.insert(main_chain.begin() + pos, unpaired);
-    }
-    return (main_chain);
+	if (unpaired != -1) {
+		size_t pos = binaryInsertPosition(main_chain, unpaired);
+		main_chain.insert(main_chain.begin() + pos, unpaired);
+	}
+	return main_chain;
 }
