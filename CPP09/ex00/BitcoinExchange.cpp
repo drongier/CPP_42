@@ -30,14 +30,12 @@ bool BitcoinExchange::isNumeric(const std::string& str, double& value) {
 	if (str.empty())
 		return false;
 
-	// Trim les espaces au début/fin si nécessaire
 	std::string trimmed = str;
 
 	char* endptr;
 	errno = 0;
-	value = strtod(trimmed.c_str(), &endptr);
+	value = strtod(trimmed.c_str(), &endptr); //28.05abc
 
-	// Vérifier qu'on a bien tout parsé
 	if (errno != 0 || *endptr != '\0' || endptr == trimmed.c_str())
 		return false;
 
@@ -55,7 +53,6 @@ bool BitcoinExchange::isValidDate(const std::string& date) {
 	std::string month_str = date.substr(5, 2);
 	std::string day_str = date.substr(8, 2);
 
-	// Vérifier que ce sont des chiffres
 	for (size_t i = 0; i < year_str.length(); i++)
 		if (!isdigit(year_str[i])) return false;
 	for (size_t i = 0; i < month_str.length(); i++)
@@ -63,23 +60,18 @@ bool BitcoinExchange::isValidDate(const std::string& date) {
 	for (size_t i = 0; i < day_str.length(); i++)
 		if (!isdigit(day_str[i])) return false;
 
-	// Convertir en entiers
 	int year = atoi(year_str.c_str());
 	int month = atoi(month_str.c_str());
 	int day = atoi(day_str.c_str());
 
-	// Vérifier le mois
 	if (month < 1 || month > 12)
 		return false;
 
-	// Jours par mois
 	int days_in_month[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
-	// Année bissextile
 	if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0))
 		days_in_month[1] = 29;
 
-	// Vérifier le jour
 	if (day < 1 || day > days_in_month[month - 1])
 		return false;
 
@@ -104,7 +96,7 @@ double BitcoinExchange::getPrice(const std::string& date) {
 }
 
 void BitcoinExchange::processInput(const std::string& filename) {
-	//1) Open file
+
 	std::ifstream file(filename.c_str());
 	if(!file.is_open()) {
 		std::cerr << "Error: could not open file." << std::endl;
@@ -112,7 +104,7 @@ void BitcoinExchange::processInput(const std::string& filename) {
 	}
 
 	std::string line;
-	std::getline(file, line); //skip first line with date|value
+	std::getline(file, line);
 
 	while(std::getline(file, line)) {
 		size_t pipe_pos = line.find(" | ");
