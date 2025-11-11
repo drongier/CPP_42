@@ -6,7 +6,7 @@
 /*   By: drongier <drongier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 15:44:51 by drongier          #+#    #+#             */
-/*   Updated: 2025/10/31 13:15:10 by drongier         ###   ########.fr       */
+/*   Updated: 2025/11/11 19:52:23 by drongier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@ int	main(int ac, char **av) {
 	std::deque<int> deque;
 	struct timeval ts1;
 	struct timeval ts2;
+	
+	if (ac < 2) {
+		std::cerr << "No argument" << std::endl;
+		return (1);
+	}
 	
 	if (!pm.parseInput(ac, av, vector, deque)) {
 		return 1;

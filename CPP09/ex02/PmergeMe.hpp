@@ -94,7 +94,6 @@ PairContainer makePaire(const IntContainer& input) {
 template<typename Container>
 Container generateJacobsthalOrder(size_t n) {
 	Container jacobsthal;
-	jacobsthal.push_back(1);
 	size_t j0 = 0, j1 = 1;
 
 	while (true) {
@@ -111,19 +110,25 @@ Container generateJacobsthalOrder(size_t n) {
 		return order;
 	order.push_back(0);
 
-	for (size_t i = 1; i < jacobsthal.size(); ++i) {
+	for (size_t i = 0; i < jacobsthal.size(); ++i) {
 		size_t current = jacobsthal[i];
-		size_t previous = jacobsthal[i-1];
-		for (size_t j = current - 1; j > previous; --j) {
-			if (j < n)
-				order.push_back(j);
-		}
-		if (current < n)
+		size_t previous = (i == 0) ? 0 : jacobsthal[i-1];
+		
+		if (current < n) {
 			order.push_back(current);
+		}
+		
+		for (size_t j = current - 1; j > previous; --j) {
+			if (j < n) {
+				order.push_back(j);
+			}
+		}
 	}
+	
 	for (size_t i = 0; i < n; ++i) {
-		if (std::find(order.begin(), order.end(), i) == order.end())
+		if (std::find(order.begin(), order.end(), i) == order.end()) {
 			order.push_back(i);
+		}
 	}
 
 	return order;

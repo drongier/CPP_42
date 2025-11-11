@@ -88,7 +88,6 @@ void pmerge::printPairs(const std::vector<Pair>& pairs) {
 	std::cout << std::endl;
 }
 
-// Utilisation des templates (définis dans le .hpp)
 std::vector<int> pmerge::fordJohnson(const std::vector<int>& input) {
 	if (input.size() <= 1)
 		return input;
