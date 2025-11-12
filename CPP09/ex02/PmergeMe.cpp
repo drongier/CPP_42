@@ -6,7 +6,7 @@
 /*   By: drongier <drongier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 09:56:30 by drongier          #+#    #+#             */
-/*   Updated: 2025/11/12 09:56:31 by drongier         ###   ########.fr       */
+/*   Updated: 2025/11/12 12:05:37 by drongier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,6 @@ void pmerge::addToDeque(int value) {
 
 void pmerge::addToVector(int value) {
 	_vector.push_back(value);
-}
-
-void pmerge::printNumber() const {
-	for (size_t i = 0; i < _vector.size(); i++)
-		std::cout << _vector[i] << " ";
-	std::cout << std::endl;
 }
 
 void pmerge::display_time(struct timeval& ts1, struct timeval& ts2)
@@ -93,61 +87,38 @@ void pmerge::printDeque(const std::deque<int>& vect) {
 	}
 }
 
-void pmerge::printPairs(const std::vector<Pair>& pairs) {
-	for (size_t i = 0; i < pairs.size(); ++i) {
-		std::cout << "(" << pairs[i].a << ", " << pairs[i].b << ")";
-	}
-	std::cout << std::endl;
-}
-
 std::vector<int> pmerge::fordJohnson(const std::vector<int>& input) {
 	if (input.size() <= 1)
 		return input;
 
-	std::vector<Pair> pairs = makePaire<std::vector<int>, std::vector<Pair> >(input);
-	std::vector<int> winners = extractWinners<std::vector<Pair>, std::vector<int> >(pairs);
-	std::vector<int> losers = extractLosers<std::vector<Pair>, std::vector<int> >(pairs);
-	int unpaired = findUnpaired(pairs);
+	std::vector<Item> items;
+	items.reserve(input.size());
+	for (size_t i = 0; i < input.size(); ++i)
+		items.push_back(Item(input[i], i));
 
-	std::vector<int> main_chain = fordJohnson(winners);
+	std::vector<Item> sorted_items = fordJohnsonItems<std::vector<Item> >(items);
 
-	std::vector<size_t> order = generateJacobsthalOrder<std::vector<size_t> >(losers.size());
-	for (size_t i = 0; i < order.size(); ++i) {
-		size_t idx = order[i];
-		int val = losers[idx];
-		size_t pos = binaryInsertPosition(main_chain, val);
-		main_chain.insert(main_chain.begin() + pos, val);
-	}
-
-	if (unpaired != -1) {
-		size_t pos = binaryInsertPosition(main_chain, unpaired);
-		main_chain.insert(main_chain.begin() + pos, unpaired);
-	}
-	return main_chain;
+	std::vector<int> result;
+	result.reserve(sorted_items.size());
+	for (size_t i = 0; i < sorted_items.size(); ++i)
+		result.push_back(sorted_items[i].val);
+	
+	return result;
 }
 
 std::deque<int> pmerge::fordJohnsonDeque(const std::deque<int>& input) {
 	if (input.size() <= 1)
 		return input;
 
-	std::deque<Pair> pairs = makePaire<std::deque<int>, std::deque<Pair> >(input);
-	std::deque<int> winners = extractWinners<std::deque<Pair>, std::deque<int> >(pairs);
-	std::deque<int> losers = extractLosers<std::deque<Pair>, std::deque<int> >(pairs);
-	int unpaired = findUnpaired(pairs);
+	std::deque<Item> items;
+	for (size_t i = 0; i < input.size(); ++i)
+		items.push_back(Item(input[i], i));
 
-	std::deque<int> main_chain = fordJohnsonDeque(winners);
+	std::deque<Item> sorted_items = fordJohnsonItems<std::deque<Item> >(items);
 
-	std::deque<size_t> order = generateJacobsthalOrder<std::deque<size_t> >(losers.size());
-	for (size_t i = 0; i < order.size(); ++i) {
-		size_t idx = order[i];
-		int val = losers[idx];
-		size_t pos = binaryInsertPosition(main_chain, val);
-		main_chain.insert(main_chain.begin() + pos, val);
-	}
-
-	if (unpaired != -1) {
-		size_t pos = binaryInsertPosition(main_chain, unpaired);
-		main_chain.insert(main_chain.begin() + pos, unpaired);
-	}
-	return main_chain;
+	std::deque<int> result;
+	for (size_t i = 0; i < sorted_items.size(); ++i)
+		result.push_back(sorted_items[i].val);
+	
+	return result;
 }
