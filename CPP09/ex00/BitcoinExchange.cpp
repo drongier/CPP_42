@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: drongier <drongier@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/12 09:56:02 by drongier          #+#    #+#             */
+/*   Updated: 2025/11/12 09:56:03 by drongier         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "BitcoinExchange.hpp"
 #include <cctype>
 #include <stdexcept>
@@ -69,7 +81,7 @@ bool BitcoinExchange::isValidDate(const std::string& date) {
 
 	int days_in_month[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
-	if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0))
+	if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) //exepte 1700, 1600 [...] && 1600, 2000, 2400 [...]
 		days_in_month[1] = 29;
 
 	if (day < 1 || day > days_in_month[month - 1])
